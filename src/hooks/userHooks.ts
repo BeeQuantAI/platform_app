@@ -3,7 +3,8 @@ import { useAppContext, connectFactory } from '@/shared/utils/contextFactory';
 import { GET_USER } from '@/graphql/user';
 import { IUser } from '@/shared/utils/types';
 
-import { useLocation, useHistory } from 'react-router-dom';
+// import { useLocation, useHistory } from 'react-router-dom';
+import { useRouter, usePathname } from 'next/navigation';
 
 const KEY = 'userInfo';
 const DEFAULT_VALUE = {};
@@ -17,8 +18,13 @@ export const connect = connectFactory(KEY, DEFAULT_VALUE);
  */
 export const useLoadUser = () => {
   const { setStore } = useUserContext();
-  const location = useLocation();
-  const history = useHistory();
+  // error wcannot read properties of undefined
+  // const location = useLocation();
+  // const history = useHistory();
+
+  const router = useRouter();
+  const pathName = usePathname();
+
   const { loading, refetch } = useQuery<{ getUserInfo: IUser }>(GET_USER, {
     onCompleted: (data) => {
       if (data.getUserInfo) {
@@ -28,8 +34,8 @@ export const useLoadUser = () => {
           displayName,
           refetchHandler: refetch,
         });
-        if (location.pathname === '/login') {
-          history.push(`/dashboard`);
+        if (pathName.match('/login')) {
+          router.push(`/dashboard`);
         }
         return;
       }
@@ -39,8 +45,8 @@ export const useLoadUser = () => {
         refetchHandler: refetch,
       });
       console.log('failed retrieving user info, backing to login');
-      if (location.pathname !== '/login') {
-        history.push(`/login?orgUrl=${location.pathname}`);
+      if (!pathName.match('/login')) {
+        router.push(`/login?orgUrl=${pathName}`);
       }
     },
   });
