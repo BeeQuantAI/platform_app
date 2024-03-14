@@ -3,7 +3,7 @@ module.exports = {
   extends: [
     require.resolve('eslint-config-airbnb'),
     require.resolve('eslint-config-airbnb/hooks'),
-    require.resolve('eslint-config-airbnb-typescript')
+    require.resolve('eslint-config-airbnb-typescript'),
   ],
   rules: {
     'react/function-component-definition': 0,
@@ -12,25 +12,24 @@ module.exports = {
     'react-hooks/exhaustive-deps': 1,
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/click-events-have-key-events': 0,
-    'jsx-a11y/no-static-element-interactions': 0
+    'jsx-a11y/no-static-element-interactions': 0,
+    // Added or adjusted rules
+    'indent': ['error', 2, { SwitchCase: 1 }],
+    'no-tabs': 'error',
   },
   parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
-     project: require.resolve('./tsconfig.json'),
+    project: require.resolve('./tsconfig.json'),
   },
   settings: {
-    react: {
-      'version': 'detect'
+    'react': {
+      version: 'detect',
     },
     'import/resolver': {
-      'alias': {
-        'map': [
-          [
-            '@', './src'
-          ]
-        ],
-        'extensions': ['.ts', '.tsx']
-      }
-    }
-  }
-}
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.ts', '.tsx'],
+      },
+    },
+  },
+};
