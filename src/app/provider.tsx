@@ -3,13 +3,33 @@
 import { ApolloProvider } from '@apollo/client';
 import { client } from 'boot/apollo';
 import { ReactNode } from 'react';
+import StyledComponentsRegistry from './lib/registry';
+import { ThemeProvider } from 'styled-components';
+import { useUserContext } from '@/hooks/userHooks';
 
 interface Props {
   children: ReactNode;
 }
 
 const Providers: React.FC<Props> = ({ children }) => {
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  const { store } = useUserContext();
+  const themeColor = store.themeColor || 'dark';
+  // const themeColor = store.themeColor || localStorage.getItem(THEME) || 'dark';
+
+  return (
+    <ApolloProvider client={client}>
+      <ThemeProvider
+        theme={{
+          mode: themeColor,
+          direction: 'ltr',
+          shadow: 'on',
+          border: 'on',
+        }}
+      >
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </ThemeProvider>
+    </ApolloProvider>
+  );
 };
 
 export default Providers;
