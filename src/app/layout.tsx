@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Providers from './provider';
+import './global.css';
 
 export const metadata = {
   title: 'Beequant.ai',

@@ -1,7 +1,7 @@
 import React from 'react';
 
-type Props = {};
+interface Props {}
 
-const page = (props: Props) => <div> dashboard page</div>;
+const Dashboard: React.FC<Props> = () => <div> dashboard page</div>;
 
-export default page;
+export default Dashboard;
