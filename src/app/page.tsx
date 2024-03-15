@@ -1,7 +1,5 @@
 'use client';
 
-import { ApolloProvider } from '@apollo/client';
-import { client } from 'boot/apollo';
 import LoadUser from '@/shared/components/LoadUser';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -14,20 +12,18 @@ function page() {
 
   return (
     <>
-      <ApolloProvider client={client}>
-        <LoadUser>
-          <ThemeProvider
-            theme={{
-              mode: themeColor,
-              direction: 'ltr',
-              shadow: 'on',
-              border: 'on',
-            }}
-          >
-            <div>page</div>
-          </ThemeProvider>
-        </LoadUser>
-      </ApolloProvider>
+      <LoadUser>
+        <ThemeProvider
+          theme={{
+            mode: themeColor,
+            direction: 'ltr',
+            shadow: 'on',
+            border: 'on',
+          }}
+        >
+          <div>page</div>
+        </ThemeProvider>
+      </LoadUser>
     </>
   );
 }

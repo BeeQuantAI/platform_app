@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Providers from './provider';
 
 export const metadata = {
   title: 'Beequant.ai',
@@ -9,7 +10,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <div id="root">{children}</div>
+        <Providers>
+          <div id="root">{children}</div>
+        </Providers>
       </body>
     </html>
   );

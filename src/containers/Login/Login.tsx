@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FacebookIcon from 'mdi-react/FacebookIcon';
@@ -25,14 +27,15 @@ import { useUserContext } from '@/hooks/userHooks';
 import { useGoTo } from '@/hooks/useGoTo';
 import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
 import LogInForm from './components/LogInForm';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
-  const history = useHistory();
+  console.log('debug print: login start here');
+  const router = useRouter();
   const [error, setError] = useState('');
   const originUrl = useSearchParams().get('orgUrl');
   const [login] = useMutation(USER_LOGIN);
   const { store } = useUserContext();
-  const { go } = useGoTo();
   useTitle(getPublicRouteByKey(ROUTE_KEY.LOGIN).title);
 
   const onSubmit = async (data: { email: string; password: string; remember_me: boolean }) => {
@@ -53,9 +56,11 @@ const Login = () => {
       }
 
       if (originUrl && originUrl !== '/') {
-        history.push(originUrl);
+        // history.push(originUrl);
+        router.back();
       } else {
-        go(ROUTE_KEY.HOME);
+        router.push('/home');
+        // go(ROUTE_KEY.HOME);
       }
     }
     // for login failed
