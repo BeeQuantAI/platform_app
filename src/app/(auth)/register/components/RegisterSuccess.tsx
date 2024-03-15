@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   AccountButton,
@@ -10,8 +9,8 @@ import {
   AccountTitle,
   AccountWrap,
 } from '@/shared/components/account/AccountElements';
-import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
 import imageSuccess from '@/shared/img/success.png';
+import Link from 'next/link';
 
 const RegisterSuccess = () => {
   return (
@@ -31,12 +30,8 @@ const RegisterSuccess = () => {
             </AccountTitle>
           </AccountHead>
           {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
-          <AccountButton
-            as={NavLink}
-            variant="outline-primary"
-            to={getPublicRouteByKey(ROUTE_KEY.LOGIN).path}
-          >
-            Back to Login
+          <AccountButton variant="outline-primary">
+            <Link href="/login">Back to Login</Link>
           </AccountButton>
         </AccountCard>
       </AccountContent>

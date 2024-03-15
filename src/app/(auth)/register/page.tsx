@@ -42,6 +42,7 @@ const Register = () => {
       setIsRegistered(true);
     }
     // for register failed
+    console.log(result.data);
     setError(`Register failed: ${result.data.register.message}`);
   };
 

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import { Alert } from 'react-bootstrap';
@@ -19,7 +18,7 @@ import {
 import { emailPatter } from '@/shared/utils/helpers';
 import { CheckBoxField } from '@/shared/components/form/FormCheckBox';
 import { EMAIL, REMEMBER_ME } from '@/shared/constants/storage';
-import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
+import Link from 'next/link';
 
 type LogInFormProps = {
   onSubmit: (data: any) => void;
@@ -90,7 +89,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
             defaultValue=""
           />
           <AccountForgotPassword>
-            <NavLink to="/login">Forgot a password?</NavLink>
+            <Link href="/login">Forgot a password?</Link>
           </AccountForgotPassword>
         </FormGroupField>
       </FormGroup>
@@ -115,12 +114,8 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
       <AccountButton variant="primary" type="submit">
         Sign In
       </AccountButton>
-      <AccountButton
-        as={NavLink}
-        variant="outline-primary"
-        to={getPublicRouteByKey(ROUTE_KEY.REGISTER).path}
-      >
-        Create Account
+      <AccountButton variant="outline-primary">
+        <Link href={'/register'}>Create Account</Link>
       </AccountButton>
     </LoginForm>
   );

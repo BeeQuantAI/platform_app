@@ -5,7 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
   // uri: import.meta.env.VITE_DEV_SERVER_URL,
-  uri: process.env.NEXT_DEV_SERVER_URL,
+  uri: process.env.NEXT_PUBLIC_DEV_SERVER_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
