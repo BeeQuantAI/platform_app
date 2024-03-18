@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import StyledComponentsRegistry from './lib/registry';
 import { ThemeProvider } from 'styled-components';
 import { useUserContext } from '@/hooks/userHooks';
+import GlobalStyles from '@/styles/globalStyles';
 
 interface Props {
   children: ReactNode;
@@ -26,6 +27,7 @@ const Providers: React.FC<Props> = ({ children }) => {
           border: 'on',
         }}
       >
+        <GlobalStyles />
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </ThemeProvider>
     </ApolloProvider>

@@ -22,10 +22,9 @@ const RegisterSuccess = () => {
             <AccountTitle>
               <AccountLogo>
                 <AccountLogoAccent>
-                  {' '}
-                  Congratulations ! <br />{' '}
+                  Congratulations ! <br />
                 </AccountLogoAccent>
-              </AccountLogo>{' '}
+              </AccountLogo>
               Your registration is successful
             </AccountTitle>
           </AccountHead>
