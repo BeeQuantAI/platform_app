@@ -111,13 +111,13 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     component: BotDetail,
   },
   [ROUTE_KEY.CRYPTO_EXCHANGES]: {
-    path: '/crypto/exchanges',
+    path: '/crypto/exchange',
     name: 'Exchanges',
     title: 'Exchanges - BeeQuant',
     component: CryptoExchanges,
   },
   [ROUTE_KEY.CRYPTO_PRICES]: {
-    path: '/crypto/prices',
+    path: '/crypto/price',
     name: 'Prices',
     title: 'Prices - BeeQuant',
     component: CryptoPrices,
