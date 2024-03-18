@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { colorWhite } from '@/styles/palette';
 import { Button } from '@/shared/components/Button';
