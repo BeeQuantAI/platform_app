@@ -1,6 +1,7 @@
 import TopbarSidebarButton from './TopbarSidebarButton';
 import TopbarProfile from './TopbarProfile';
 import { TopbarContainer, TopbarLeft, TopbarLogo, TopbarRight } from './BasicTopbarComponents';
+import { ROUTE_KEY } from '@/routes/routeConfig';
 
 type TopbarProps = {
   changeMobileSidebarVisibility: () => void;
@@ -14,7 +15,7 @@ const Topbar = ({ changeMobileSidebarVisibility, changeSidebarVisibility }: Topb
         onClickMobile={changeMobileSidebarVisibility}
         onClickDesktop={changeSidebarVisibility}
       />
-      <TopbarLogo to="/dashboard" />
+      <TopbarLogo href={ROUTE_KEY.DASHBOARD} />
     </TopbarLeft>
     <TopbarRight>
       <TopbarProfile />

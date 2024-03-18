@@ -1,5 +1,5 @@
 import { Badge } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 import {
@@ -22,7 +22,7 @@ type SidebarLinkProps = {
 
 const SidebarLink = ({ title, icon, newLink, route, onClick }: SidebarLinkProps) => (
   <li>
-    <SidebarNavLink to={route} onClick={onClick} activeClassName="active">
+    <SidebarNavLink href={route} onClick={onClick} activeClassName="active">
       {icon ? <SidebarLinkIcon className={`lnr lnr-${icon}`} /> : ''}
       <SidebarLinkTitle>
         {title}
@@ -42,7 +42,7 @@ export default SidebarLink;
 
 // region STYLES
 
-export const SidebarNavLink = styled(NavLink)`
+export const SidebarNavLink = styled(Link)`
   height: 36px;
   width: 240px;
   transition: all 0.3s;

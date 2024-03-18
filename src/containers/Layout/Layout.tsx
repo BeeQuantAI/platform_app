@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { paddingLeft } from '@/styles/directions';
 import Topbar from './topbar/Topbar';
@@ -35,7 +34,7 @@ const Layout = () => {
   );
 };
 
-export default withRouter(Layout);
+export default Layout;
 
 // region STYLES
 

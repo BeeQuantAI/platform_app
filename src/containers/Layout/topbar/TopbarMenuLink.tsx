@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { colorHover, colorText, colorAccent } from '@/styles/palette';
 import { left } from '@/styles/directions';
@@ -13,7 +13,7 @@ type TopbarMenuLinkProps = {
 };
 
 const TopbarMenuLink = ({ title, icon, path, onClick, iconRight }: TopbarMenuLinkProps) => (
-  <TopbarLink to={path} onClick={onClick} iconRight={iconRight}>
+  <TopbarLink href={path} onClick={onClick} iconRight={iconRight}>
     {iconRight ? (
       <>
         <TopbarLinkTitle>{title}</TopbarLinkTitle>

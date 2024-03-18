@@ -23,6 +23,7 @@ import { useSearchParams } from '@/hooks/useSearchParams';
 import { useUserContext } from '@/hooks/userHooks';
 import LogInForm from './components/LogInForm';
 import { useRouter } from 'next/navigation';
+import { ROUTE_KEY } from '@/routes/routeConfig';
 
 const Login = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const Login = () => {
     });
     if (result.data.login.code === 200) {
       // refresh store after login success
-      store.refetchHandler();
+      // store.refetchHandler();
       if (data.remember_me) {
         sessionStorage.setItem(AUTH_TOKEN, '');
         localStorage.setItem(EMAIL, data.email);
@@ -52,8 +53,7 @@ const Login = () => {
         // history.push(originUrl);
         router.back();
       } else {
-        router.push('/home');
-        // go(ROUTE_KEY.HOME);
+        router.push(ROUTE_KEY.DASHBOARD);
       }
     }
     // for login failed

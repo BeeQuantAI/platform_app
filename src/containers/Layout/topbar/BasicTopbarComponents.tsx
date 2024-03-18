@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import DownIcon from 'mdi-react/ChevronDownIcon';
 import {
   colorIcon,

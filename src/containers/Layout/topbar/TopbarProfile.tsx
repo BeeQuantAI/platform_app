@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Collapse } from 'react-bootstrap';
 import styled from 'styled-components';
