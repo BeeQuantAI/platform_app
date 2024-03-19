@@ -5,12 +5,12 @@ import { Collapse } from 'react-bootstrap';
 import styled from 'styled-components';
 import { marginLeft, right, left } from '@/styles/directions';
 import { colorBackground, colorHover, colorText, colorBorder } from '@/styles/palette';
-import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
-import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
 
 import Ava from '@/shared/img/ava.png';
 import { useUserContext } from '@/hooks/userHooks';
 import { AUTH_TOKEN } from '@/shared/constants/storage';
+import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
+import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
 
 const TopbarProfile = () => {
   const { store } = useUserContext();

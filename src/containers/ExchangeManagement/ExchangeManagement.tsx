@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import ContentCard from './components/ContentCard';
 import { useTitle } from '@/hooks/useTitle';
 import { ROUTE_KEY, getRouteByKey } from '@/routes/routeConfig';
+import ContentCard from './components/ContentCard';
 
 const ExchangeManagement = () => {
   useTitle(getRouteByKey(ROUTE_KEY.EXCHANGE_MANAGEMENT).title);

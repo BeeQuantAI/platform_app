@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { CardBody } from '@/shared/components/Card';
 import { colorBackground } from '@/styles/palette';
 
-// eslint-disable-next-line import/prefer-default-export
 export const ProfileCard = styled(CardBody)`
   height: 100%;
   padding: 0;

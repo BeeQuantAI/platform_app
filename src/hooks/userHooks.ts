@@ -35,9 +35,8 @@ export const useLoadUser = () => {
           refetchHandler: refetch,
         });
         if (pathName.match('/login')) {
-          router.push(`/dashboard`);
+          router.push('/dashboard');
         }
-        return;
       }
     },
     onError: () => {

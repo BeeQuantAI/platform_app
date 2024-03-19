@@ -2,9 +2,8 @@ import { Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Card } from '@/shared/components/Card';
 import { left } from '@/styles/directions';
-import { ProfileCard } from './ProfileBasicComponents';
-
 import Ava from '@/shared/img/ava.png';
+import { ProfileCard } from './ProfileBasicComponents';
 
 const ProfileMain = () => (
   <Col md={12} lg={12} xl={12}>

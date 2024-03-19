@@ -15,9 +15,9 @@ import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
 import { useMutation } from '@apollo/client';
 import { USER_REGISTER } from '@/graphql/auth';
 import { useTitle } from '@/hooks/useTitle';
+import Link from 'next/link';
 import RegisterForm from './components/RegisterForm';
 import RegisterSuccess from './components/RegisterSuccess';
-import Link from 'next/link';
 
 const Register = () => {
   const [register] = useMutation(USER_REGISTER);

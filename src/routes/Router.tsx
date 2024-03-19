@@ -4,9 +4,9 @@ import { colorBackgroundBody } from '@/styles/palette';
 import { paddingLeft } from '@/styles/directions';
 import Layout from '@/containers/Layout';
 import MainWrapper from '@/containers/App/MainWrapper';
-import { ROUTE_KEY, publicRoutes, routes } from './routeConfig';
 import { isAuthenticated } from '@/shared/utils/auth';
 import { useGoTo } from '@/hooks/useGoTo';
+import { ROUTE_KEY, publicRoutes, routes } from './routeConfig';
 
 const wrappedRoutes = () => {
   const { go } = useGoTo();

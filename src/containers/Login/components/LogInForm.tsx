@@ -32,7 +32,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
     watch,
     formState: { errors },
   } = useForm();
-  let rememberMe = watch('remember_me');
+  const rememberMe = watch('remember_me');
 
   useEffect(() => {
     if (rememberMe !== undefined) localStorage.setItem(REMEMBER_ME, rememberMe);
@@ -115,7 +115,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
         Sign In
       </AccountButton>
       <AccountButton variant="outline-primary">
-        <Link href={'/register'}>Create Account</Link>
+        <Link href="/register">Create Account</Link>
       </AccountButton>
     </LoginForm>
   );

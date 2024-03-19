@@ -26,8 +26,8 @@ import { useTitle } from '@/hooks/useTitle';
 import { useUserContext } from '@/hooks/userHooks';
 import { useGoTo } from '@/hooks/useGoTo';
 import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
-import LogInForm from './components/LogInForm';
 import { useRouter } from 'next/navigation';
+import LogInForm from './components/LogInForm';
 
 const Login = () => {
   console.log('debug print: login start here');

@@ -7,6 +7,8 @@ import { ThemeProvider } from 'styled-components';
 import { useUserContext } from '@/hooks/userHooks';
 import GlobalStyles from '@/styles/globalStyles';
 import { THEME } from '@/shared/constants/storage';
+import LoadUser from '@/shared/components/LoadUser';
+import ScrollToTop from '@/styles/ScrollToTop';
 import StyledComponentsRegistry from './lib/registry';
 
 interface Props {
@@ -16,7 +18,8 @@ interface Props {
 // eslint-disable-next-line react/prop-types
 const Providers: React.FC<Props> = ({ children }) => {
   const { store } = useUserContext();
-  const themeColor = store.themeColor || localStorage.getItem(THEME) || 'dark';
+  // Todo: localStorage.getItem(THEME)  will produce localstorage undefined error
+  const themeColor = store.themeColor || 'dark';
 
   return (
     <ApolloProvider client={client}>
@@ -29,7 +32,11 @@ const Providers: React.FC<Props> = ({ children }) => {
         }}
       >
         <GlobalStyles />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <ScrollToTop>
+            <LoadUser>{children}</LoadUser>
+          </ScrollToTop>
+        </StyledComponentsRegistry>
       </ThemeProvider>
     </ApolloProvider>
   );

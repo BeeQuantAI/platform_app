@@ -1,11 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { ThemeProvider } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Router from '@/routes/Router';
-import ScrollToTop from './ScrollToTop';
-import GlobalStyles from './globalStyles';
 import { useUserContext } from '@/hooks/userHooks';
 import { THEME } from '@/shared/constants/storage';
+import ScrollToTop from './ScrollToTop';
+import GlobalStyles from './globalStyles';
 
 const AppContent = () => {
   const { store } = useUserContext();

@@ -33,7 +33,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
     watch,
     formState: { errors },
   } = useForm();
-  let rememberMe = watch('remember_me');
+  const rememberMe = watch('rememberMe');
 
   useEffect(() => {
     if (rememberMe !== undefined) localStorage.setItem(REMEMBER_ME, rememberMe);

@@ -21,9 +21,9 @@ import { USER_LOGIN } from '@/graphql/auth';
 import { AUTH_TOKEN, EMAIL } from '@/shared/constants/storage';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { useUserContext } from '@/hooks/userHooks';
-import LogInForm from './components/LogInForm';
 import { useRouter } from 'next/navigation';
 import { ROUTE_KEY } from '@/routes/routeConfig';
+import LogInForm from './components/LogInForm';
 
 const Login = () => {
   const router = useRouter();

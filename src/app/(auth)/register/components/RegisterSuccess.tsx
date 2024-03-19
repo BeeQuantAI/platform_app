@@ -12,31 +12,30 @@ import {
 import imageSuccess from '@/shared/img/success.png';
 import Link from 'next/link';
 
-const RegisterSuccess = () => {
-  return (
-    <AccountWrap>
-      <AccountContent>
-        <AccountCard>
-          <AccountImage src={imageSuccess} alt="success" />
-          <AccountHead>
-            <AccountTitle>
-              <AccountLogo>
-                <AccountLogoAccent>
-                  Congratulations ! <br />
-                </AccountLogoAccent>
-              </AccountLogo>
-              Your registration is successful
-            </AccountTitle>
-          </AccountHead>
-          {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
-          <AccountButton variant="outline-primary">
-            <Link href="/login">Back to Login</Link>
-          </AccountButton>
-        </AccountCard>
-      </AccountContent>
-    </AccountWrap>
-  );
-};
+const RegisterSuccess = () => (
+  <AccountWrap>
+    <AccountContent>
+      <AccountCard>
+        <AccountImage src={imageSuccess} alt="success" />
+        <AccountHead>
+          <AccountTitle>
+            <AccountLogo>
+              <AccountLogoAccent>
+                Congratulations !
+                <br />
+              </AccountLogoAccent>
+            </AccountLogo>
+            Your registration is successful
+          </AccountTitle>
+        </AccountHead>
+        {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
+        <AccountButton variant="outline-primary">
+          <Link href="/login">Back to Login</Link>
+        </AccountButton>
+      </AccountCard>
+    </AccountContent>
+  </AccountWrap>
+);
 
 export default RegisterSuccess;
 

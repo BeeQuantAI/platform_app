@@ -1,7 +1,7 @@
+import { ROUTE_KEY } from '@/routes/routeConfig';
 import TopbarSidebarButton from './TopbarSidebarButton';
 import TopbarProfile from './TopbarProfile';
 import { TopbarContainer, TopbarLeft, TopbarLogo, TopbarRight } from './BasicTopbarComponents';
-import { ROUTE_KEY } from '@/routes/routeConfig';
 
 type TopbarProps = {
   changeMobileSidebarVisibility: () => void;

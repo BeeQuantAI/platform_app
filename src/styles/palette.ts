@@ -153,11 +153,11 @@ export const landingButtonColor = '#2C86A2';
 export const landingSaffronColor = '#ffde2c';
 export const landingGradient =
   'linear-gradient(228deg, rgba(127, 244, 222, 0.95), rgba(56, 199, 225, 1))';
-// eslint-disable-next-line max-len
+
 export const landingGradientColor =
   'linear-gradient(228deg, darken(rgba(127, 244, 222, 0.95), 5%), darken(rgba(56, 199, 225, 1), 5%))';
 export const landingGradientBtn = 'linear-gradient(228deg, rgb(127, 244, 222), rgb(62, 59, 224))';
-// eslint-disable-next-line max-len
+
 export const landingGradientBtnHover =
   'linear-gradient(228deg, darken(rgb(127, 244, 222), 5%), darken(rgb(62, 59, 224), 5%))';
 

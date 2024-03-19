@@ -13,36 +13,34 @@ import {
 import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
 import imageSuccess from '@/shared/img/success.png';
 
-const RegisterSuccess = () => {
-  return (
-    <AccountWrap>
-      <AccountContent>
-        <AccountCard>
-          <AccountImage src={imageSuccess} alt="success" />
-          <AccountHead>
-            <AccountTitle>
-              <AccountLogo>
-                <AccountLogoAccent>
-                  {' '}
-                  Congratulations ! <br />{' '}
-                </AccountLogoAccent>
-              </AccountLogo>{' '}
-              Your registration is successful
-            </AccountTitle>
-          </AccountHead>
-          {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
-          <AccountButton
-            as={NavLink}
-            variant="outline-primary"
-            to={getPublicRouteByKey(ROUTE_KEY.LOGIN).path}
-          >
-            Back to Login
-          </AccountButton>
-        </AccountCard>
-      </AccountContent>
-    </AccountWrap>
-  );
-};
+const RegisterSuccess = () => (
+  <AccountWrap>
+    <AccountContent>
+      <AccountCard>
+        <AccountImage src={imageSuccess} alt="success" />
+        <AccountHead>
+          <AccountTitle>
+            <AccountLogo>
+              <AccountLogoAccent>
+                {' '}
+                Congratulations ! <br />{' '}
+              </AccountLogoAccent>
+            </AccountLogo>{' '}
+            Your registration is successful
+          </AccountTitle>
+        </AccountHead>
+        {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
+        <AccountButton
+          as={NavLink}
+          variant="outline-primary"
+          to={getPublicRouteByKey(ROUTE_KEY.LOGIN).path}
+        >
+          Back to Login
+        </AccountButton>
+      </AccountCard>
+    </AccountContent>
+  </AccountWrap>
+);
 
 export default RegisterSuccess;
 
