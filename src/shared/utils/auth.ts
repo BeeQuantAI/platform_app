@@ -19,9 +19,9 @@ const isJWTExpired = (token: string) => {
 };
 
 const isAuthenticated = (): boolean => {
-  const remember_me = localStorage.getItem(REMEMBER_ME);
+  const rememberMe = localStorage.getItem(REMEMBER_ME);
   let token;
-  if (remember_me === 'true') {
+  if (rememberMe === 'true') {
     token = localStorage.getItem(AUTH_TOKEN);
   } else {
     token = sessionStorage.getItem(AUTH_TOKEN);
