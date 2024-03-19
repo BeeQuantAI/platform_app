@@ -9,23 +9,6 @@ import { colorBackgroundBody } from '@/styles/palette';
 import { ReactNode } from 'react';
 import Layout from '@/containers/Layout';
 
-interface Props {
-  children: ReactNode;
-}
-
-export const WrappedRoutes: React.FC<Props> = ({ children }) => {
-  const router = useRouter();
-  if (!isAuthenticated()) {
-    router.push(ROUTE_KEY.LOGIN);
-  }
-  return (
-    <div>
-      <Layout />
-      <ContainerWrap>{children}</ContainerWrap>
-    </div>
-  );
-};
-
 const ContainerWrap = styled.div`
   padding-top: 90px;
   min-height: 100vh;
@@ -43,3 +26,20 @@ const ContainerWrap = styled.div`
     padding-top: 150px;
   }
 `;
+
+interface Props {
+  children: ReactNode;
+}
+
+export const WrappedRoutes: React.FC<Props> = ({ children }) => {
+  const router = useRouter();
+  if (!isAuthenticated()) {
+    router.push(ROUTE_KEY.LOGIN);
+  }
+  return (
+    <div>
+      <Layout />
+      <ContainerWrap>{children}</ContainerWrap>
+    </div>
+  );
+};

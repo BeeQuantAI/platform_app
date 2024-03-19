@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { paddingLeft } from '@/styles/directions';
+import { SIDEBAR_COLLAPSED } from '@/shared/constants/storage';
 import Topbar from './topbar/Topbar';
 import Sidebar from './sidebar/Sidebar';
-import { SIDEBAR_COLLAPSED } from '@/shared/constants/storage';
 
 const Layout = () => {
   const initSidebarCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED) === 'true' || false;

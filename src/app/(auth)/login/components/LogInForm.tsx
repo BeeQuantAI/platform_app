@@ -90,7 +90,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
             defaultValue=""
           />
           <AccountForgotPassword>
-            <Link href={'/login'}>Forgot a password?</Link>
+            <Link href={ROUTE_KEY.LOGIN}>Forgot a password?</Link>
           </AccountForgotPassword>
         </FormGroupField>
       </FormGroup>
@@ -116,7 +116,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
         Sign In
       </AccountButton>
       <AccountButton variant="outline-primary" to={getPublicRouteByKey(ROUTE_KEY.REGISTER).path}>
-        <Link href={'/register'}>Create Account</Link>
+        <Link href={ROUTE_KEY.REGISTER}>Create Account</Link>
       </AccountButton>
     </LoginForm>
   );
