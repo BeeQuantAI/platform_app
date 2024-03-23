@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Card } from '@/shared/components/Card';
 import { left } from '@/styles/directions';
-import Ava from '@/shared/img/ava.png';
 import { ProfileCard } from './ProfileBasicComponents';
 
 const ProfileMain = () => (
@@ -11,7 +11,7 @@ const ProfileMain = () => (
       <ProfileCard>
         <ProfileInformation>
           <ProfileAvatar>
-            <img src={Ava} alt="avatar" />
+            <img src="/img/ava.png" alt="avatar" />
           </ProfileAvatar>
           <ProfileData>
             <ProfileName>Holly Hammond</ProfileName>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { Scrollbar } from 'smooth-scrollbar-react';
 import styled from 'styled-components';
 import { colorBackground, colorScrollbar } from '@/styles/palette';

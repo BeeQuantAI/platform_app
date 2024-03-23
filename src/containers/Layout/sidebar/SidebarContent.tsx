@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { colorBorder, colorBackground, colorHover } from '@/styles/palette';
 import { left } from '@/styles/directions';
 import styled from 'styled-components';

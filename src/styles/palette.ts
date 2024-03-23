@@ -1,8 +1,13 @@
 import theme from 'styled-theming';
 import { darken, lighten } from 'polished';
 
-import lightLogo from '@/shared/img/logo/logo_light.png';
-import darkLogo from '@/shared/img/logo/logo_dark.png';
+// eslint-disable-next-line import/no-absolute-path
+// import lightLogo from '/img/logo/logo_light.png';
+// // eslint-disable-next-line import/no-absolute-path
+// import darkLogo from '/img/logo/logo_dark.png';
+
+const LIGHT_LOGO = '/img/logo/logo_light.png';
+const DARK_LOGO = '/img/logo/logo_dark.png';
 
 export const colorBackground = theme('mode', {
   light: 'white',
@@ -45,8 +50,8 @@ export const colorTextAdditional = theme('mode', {
 });
 
 export const logoImg = theme('mode', {
-  light: `url(${lightLogo})`,
-  dark: `url(${darkLogo})`,
+  light: `url(${LIGHT_LOGO})`,
+  dark: `url(${DARK_LOGO})`,
 });
 
 export const colorHover = theme('mode', {

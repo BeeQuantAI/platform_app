@@ -1,16 +1,16 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
 'use client';
 
 import Link from 'next/link';
 import styled from 'styled-components';
 import { colorWhite } from '@/styles/palette';
 import { Button } from '@/shared/components/Button';
-import image404 from '@/shared/img/404.png';
-import bg404 from '@/shared/img/bg_404.png';
 
 const NotFound404 = () => (
   <NotFoundContainer>
     <NotFountContent>
-      <NotFoundImage src={image404} alt="404" />
+      <NotFoundImage src="/img/404.png" alt="404" />
       <NotFoundInfo>Ooops! The page you are looking for could not be found</NotFoundInfo>
       <Button as={Link} variant="primary" href="/">
         Back Home
@@ -28,7 +28,7 @@ const NotFoundContainer = styled.div`
   height: 100vh;
   overflow: auto;
   display: flex;
-  background: url(${bg404}) no-repeat center;
+  background: url('/img/bg_404.png') no-repeat center;
   background-size: cover;
 
   button {
