@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import EyeIcon from 'mdi-react/EyeIcon';
 import KeyVariantIcon from 'mdi-react/KeyVariantIcon';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ type PasswordFieldProps = {
   [key: string]: any;
 };
 
-const PasswordField = React.forwardRef(({ input, keyIcon, ...props }: PasswordFieldProps, ref) => {
+const PasswordField = forwardRef(({ input, keyIcon, ...props }: PasswordFieldProps, ref) => {
   const [passwordShown, setPasswordShown] = useState(false);
   return (
     <>
