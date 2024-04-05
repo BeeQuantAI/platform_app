@@ -10,7 +10,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "mock": "node ./mock/index.js",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "dependencies": {
     "@apollo/client": "^3.8.6",
@@ -74,8 +76,8 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn prettier --write"
+    "*.{js,jsx,ts,tsx, json, html, css}": [
+      "yarn format:write"
     ]
   }
 }

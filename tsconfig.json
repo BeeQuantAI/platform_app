@@ -8,14 +8,14 @@
     "skipLibCheck": true,
     "baseUrl": "src",
     "paths": {
-      "@/styles/*": ["styles/*"], 
+      "@/styles/*": ["styles/*"],
       "@/shared/*": ["shared/*"],
       "@/graphql/*": ["graphql/*"],
       "@/utils/*": ["shared/utils/*"],
       "@/hooks/*": ["hooks/*"],
       "@/constants/*": ["shared/constants/*"],
       "@/containers/*": ["containers/*"],
-      "@/routes/*": ["routes/*"],
+      "@/routes/*": ["routes/*"]
     },
 
     /* Bundler mode */
@@ -32,6 +32,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["./","./vanta.types.d.ts"],
+  "include": ["./", "./vanta.types.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
