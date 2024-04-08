@@ -13,4 +13,4 @@ VITE_DEV_SERVER_URL=http://localhost:3000/graphql
 
 ## Start developing work
 
-1. run `yarn dev` and have fun
+1. run `yarn dev` and have

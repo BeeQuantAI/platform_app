@@ -10,6 +10,7 @@ const NotFound404 = () => (
     <NotFountContent>
       <NotFoundImage src={image404} alt="404" />
       <NotFoundInfo>Ooops! The page you are looking for could not be found</NotFoundInfo>
+      {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
       <Button as={Link} variant="primary" to="/">
         Back Home
       </Button>
