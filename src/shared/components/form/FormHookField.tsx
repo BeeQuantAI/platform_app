@@ -36,12 +36,6 @@ export const FormField: React.FC<FormFieldProps> = ({
   </FormInputWrap>
 );
 
-/* @ts-ignore */
-export const renderHookComponentField =
-  (component: React.ElementType) => (props: { [key: string]: any }) => (
-    <FormField component={component} {...props} />
-  );
-
 export default FormField;
 
 // region STYLES
