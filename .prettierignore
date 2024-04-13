@@ -1,3 +1,4 @@
 # Ignore artifacts:
 public
 coverage
+README.md
