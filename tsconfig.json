@@ -4,8 +4,6 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "types": ["vite/client", "jest", "react", "react-dom", "node"],
     "skipLibCheck": true,
     "baseUrl": "src",
