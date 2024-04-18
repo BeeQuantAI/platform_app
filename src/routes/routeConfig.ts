@@ -13,6 +13,9 @@ import ExchangeDetails from '@/containers/Cryptoeconomy/ExchangeDetails';
 import PriceDetails from '@/containers/Cryptoeconomy/PriceDetails';
 import BotDetail from '@/containers/Bot/BotDetails';
 import BotCreate from '@/containers/Bot/BotCreate';
+import ResetPasswordInitiationPage from '@/containers/ResetPassword/ResetPasswordInitiationPage';
+import ResetPasswordForm from '@/containers/ResetPassword/components/ResetPasswordForm';
+import PasswordResetSuccess from '@/containers/ResetPassword/components/PasswordResetSuccess';
 
 interface IRoute {
   path: string;
@@ -30,6 +33,9 @@ export const ROUTE_KEY = {
   LOGIN: 'login',
   REGISTER: 'register',
   SETTINGS: 'settings',
+  RESET_PASSWORD_INITIATION: 'reset_password_initiation',
+  RESET_PASSWORD_FORM: 'reset_password_form',
+  PASSWORD_RESET_SUCCESS: 'password_reset_success',
   BOT_DASHBOARD: 'bot_dashboard',
   BOT_MANAGEMENT: 'bot_management',
   BOT_CREATE: 'bot_create',
@@ -53,6 +59,28 @@ export const PUBLIC_ROUTE_CONFIG: Record<string, IRoute> = {
     title: 'Register - BeeQuant',
     component: Register,
   },
+
+  [ROUTE_KEY.RESET_PASSWORD_INITIATION]: {
+    path: '/reset-password-initiation',
+    name: 'Reset Password',
+    title: 'Reset Password - BeeQuant',
+    component: ResetPasswordInitiationPage,
+  },
+
+  [ROUTE_KEY.RESET_PASSWORD_FORM]: {
+    path: '/reset-password-form',
+    name: 'Reset Password Form',
+    title: 'Enter New Password - BeeQuant',
+    component: ResetPasswordForm,
+  },
+
+  [ROUTE_KEY.PASSWORD_RESET_SUCCESS]: {
+    path: '/password-reset-success',
+    name: 'Password Reset Success',
+    title: 'Password Reset Success - BeeQuant',
+    component: PasswordResetSuccess,
+  },
+
   [ROUTE_KEY.PAGE_404]: {
     path: '/404',
     name: '404',
