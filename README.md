@@ -15,6 +15,8 @@
 
 1. run `yarn dev` and have fun
 
+to test pipeline runs
+
 ## To run the frontend within the docker container:
 
 Follow these steps to get the frontend up and running inside a Docker container.
