@@ -16,7 +16,7 @@ import {
   AccountForgotPassword,
   LoginForm,
 } from '@/shared/components/account/AccountElements';
-import { emailPatter } from '@/shared/utils/helpers';
+import { emailPattern } from '@/shared/utils/helpers';
 import { CheckBoxField } from '@/shared/components/form/FormCheckBox';
 import { EMAIL, REMEMBER_ME } from '@/shared/constants/storage';
 import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
@@ -58,7 +58,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
             rules={{
               required: 'This is required field',
               pattern: {
-                value: emailPatter,
+                value: emailPattern,
                 message: 'Entered value does not match email format',
               },
             }}

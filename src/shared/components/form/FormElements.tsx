@@ -4,7 +4,6 @@ import {
   colorAdditional,
   colorBackgroundBody,
   colorBorder,
-  colorDustyWhite,
   colorFieldsBorder,
   colorText,
   colorWhite,
@@ -31,7 +30,7 @@ export const FormGroupLabel = styled.span`
   color: ${colorText};
 
   span {
-    color: ${colorDustyWhite};
+    color: ${colorAccent};
   }
 `;
 
@@ -102,6 +101,7 @@ export const FormContainer = styled.form<{
 
     &[disabled] {
       background: ${colorBackgroundBody};
+      cursor: not-allowed;
 
       &:focus,
       &:active {

@@ -1,14 +1,48 @@
 import { screen, render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { useUserContext } from '@/hooks/userHooks';
 import RegisterSuccess from './RegisterSuccess';
-
-jest.mock('styled-theming', () => ({
-  default: jest.fn().mockImplementation((_, values) => values.mode),
-}));
 
 jest.mock('@/containers/Dashboard/components/DashboardCardElements', () => ({
   WidgetTrendingIconUp: () => <div>Mocked WidgetTrendingIconUp</div>,
 }));
+
+const mockLocalStorage = (() => {
+  let store: Record<string, string> = {};
+  return {
+    getItem(key: string): string | null {
+      return store[key] || null;
+    },
+    setItem(key: string, value: string): void {
+      store[key] = value.toString();
+    },
+    clear(): void {
+      store = {};
+    },
+  };
+})();
+
+Object.defineProperty(window, 'localStorage', {
+  value: mockLocalStorage,
+});
+
+jest.mock('@/hooks/userHooks', () => ({
+  useUserContext: jest.fn(),
+}));
+
+beforeEach(() => {
+  (useUserContext as jest.Mock).mockImplementation(() => ({
+    store: { themeColor: 'dark' },
+    setStore: jest.fn(),
+  }));
+
+  localStorage.setItem('THEME', 'dark');
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+  localStorage.clear();
+});
 
 describe('RegisterSuccess component', () => {
   it('should render successfully and show "Your registration is successful"', () => {

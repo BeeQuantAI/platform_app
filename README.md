@@ -11,6 +11,17 @@
     VITE_DEV_SERVER_URL=http://localhost:3000/graphql
     ```
 
+## Environment Variables
+This project uses the following environment variables:
+
+```
+VITE_APP_REFERENCE_NAME=COREINTERNAL
+```
+
+This variable specifies the default reference name used in the registration. Make sure to set this variable in your environment configuration. If not set, the application will use `Default_Reference_Name` provided in the code.
+
+Please make sure to set up the required environment variables before running the application.
+
 ## Start developing work
 
 1. run `yarn dev` and have fun
