@@ -11,6 +11,7 @@ type FormFieldProps = {
   isAboveError?: boolean;
   component?: any;
   rules?: any;
+  disabled?: boolean;
   [key: string]: any;
 };
 

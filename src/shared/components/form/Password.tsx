@@ -9,29 +9,56 @@ import FormField from './FormField';
 type PasswordFieldProps = {
   input: any;
   keyIcon?: boolean;
+  onFocus?: () => void;
+  placeholder?: string;
+  meta: {
+    touched: boolean;
+    error?: string;
+  };
+  isAboveError?: boolean;
   [key: string]: any;
 };
 
-const PasswordField = forwardRef(({ input, keyIcon, ...props }: PasswordFieldProps, ref) => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  return (
-    <>
-      {keyIcon && (
-        <PasswordIcon>
-          <KeyVariantIcon />
-        </PasswordIcon>
-      )}
-      <FormField {...props} {...input} type={passwordShown ? 'text' : 'password'} ref={ref} />
-      <FormFieldButton
-        $active={passwordShown.toString()}
-        type="button"
-        onClick={() => setPasswordShown((shown) => !shown)}
-      >
-        <EyeIcon />
-      </FormFieldButton>
-    </>
-  );
-});
+const PasswordField = forwardRef(
+  (
+    {
+      input,
+      keyIcon = false,
+      onFocus = () => {},
+      placeholder = '',
+      meta,
+      isAboveError = false,
+    }: PasswordFieldProps,
+    ref
+  ) => {
+    const [passwordShown, setPasswordShown] = useState(false);
+    return (
+      <>
+        {keyIcon && (
+          <PasswordIcon>
+            <KeyVariantIcon />
+          </PasswordIcon>
+        )}
+        <FormField
+          input={input}
+          meta={meta}
+          placeholder={placeholder}
+          isAboveError={isAboveError}
+          type={passwordShown ? 'text' : 'password'}
+          ref={ref}
+          onFocus={onFocus}
+        />
+        <FormFieldButton
+          $active={passwordShown.toString()}
+          type="button"
+          onClick={() => setPasswordShown((shown) => !shown)}
+        >
+          <EyeIcon />
+        </FormFieldButton>
+      </>
+    );
+  }
+);
 
 export default PasswordField;
 

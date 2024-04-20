@@ -1,17 +1,22 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-// import eslint from 'vite-plugin-eslint';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
+// import eslint from 'vite-plugin-eslint';
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  return {
+    plugins: [react()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
     },
-  },
-  server: {
-    host: '0.0.0.0',
-  },
+    define: {
+      'process.env.VITE_APP_REFERENCE_NAME': JSON.stringify(env.VITE_APP_REFERENCE_NAME),
+    },
+    server: {
+      host: '0.0.0.0',
+    },
+  };
 });
