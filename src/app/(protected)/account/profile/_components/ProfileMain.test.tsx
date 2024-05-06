@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ProfileMain from './ProfileMain';
+
 import { MockedProvider } from '@apollo/client/testing';
 import { FIND_USER_BY_EMAIL, UPDATE_USER } from '@/graphql/user';
 

@@ -3,6 +3,7 @@ import { Button, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Card } from '@/shared/components/Card';
 import { left } from '@/styles/directions';
+
 import { ProfileCard } from './ProfileBasicComponents';
 import { UPDATE_USER, FIND_USER_BY_EMAIL } from '@/graphql/user';
 // import Ava from '@/shared/img/ava.png';
@@ -240,3 +241,4 @@ const ProfileText = styled.p`
 `;
 
 // endregion
+
