@@ -19,12 +19,13 @@ const isJWTExpired = (token: string) => {
 };
 
 const isAuthenticated = (): boolean => {
-  const remember_me = localStorage.getItem(REMEMBER_ME);
+  const rememberMe = typeof window !== 'undefined' ? localStorage.getItem(REMEMBER_ME) : null;
+  // const rememberMe = localStorage.getItem(REMEMBER_ME);
   let token;
-  if (remember_me === 'true') {
-    token = localStorage.getItem(AUTH_TOKEN);
+  if (rememberMe === 'true') {
+    token = typeof window !== 'undefined' ? localStorage.getItem(AUTH_TOKEN) : null;
   } else {
-    token = sessionStorage.getItem(AUTH_TOKEN);
+    token = typeof window !== 'undefined' ? sessionStorage.getItem(AUTH_TOKEN) : null;
   }
   if (!token) return false;
   if (isJWTExpired(token)) return false;

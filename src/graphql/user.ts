@@ -29,6 +29,18 @@ export const FIND_USER = gql`
       realName
       displayName
       mobile
+      ref
+    }
+  }
+`;
+
+export const FIND_USER_BY_EMAIL = gql`
+  query getUserByEmail($email: String!) {
+    getUserByEmail(email: $email) {
+      id
+      email
+      displayName
+      ref
     }
   }
 `;

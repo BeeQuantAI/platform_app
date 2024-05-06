@@ -9,7 +9,7 @@ export const useGoTo = () => {
   const back = () => history.goBack();
   const go = (pageKey?: string, params?: Record<string, string | number>) => {
     if (!pageKey) {
-      history.push(`/`);
+      history.push('/');
       return;
     }
     const route = getRouteByKey(pageKey) || getPublicRouteByKey(pageKey);
