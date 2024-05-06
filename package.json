@@ -49,7 +49,7 @@
     "smooth-scrollbar-react": "^2.4.1",
     "styled-components": "^6.1.0",
     "styled-theming": "^2.2.0",
-    "three": "0.124.0",
+    "three": "0.125.0",
     "vanta": "^0.5.24",
     "yarn": "^1.22.19"
   },
