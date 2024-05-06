@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { colorBorder, colorBackground, colorHover } from '@/styles/palette';
 import { left } from '@/styles/directions';
 import styled from 'styled-components';
-import SidebarLink, { SidebarLinkTitle, SidebarNavLink } from './SidebarLink';
-import SidebarCategory from './SidebarCategory';
 import { AUTH_TOKEN, THEME } from '@/shared/constants/storage';
 import { useUserContext } from '@/hooks/userHooks';
 import { ROUTE_KEY, getPublicRouteByKey, getRouteByKey } from '@/routes/routeConfig';
+import SidebarCategory from './SidebarCategory';
+import SidebarLink, { SidebarLinkTitle, SidebarNavLink } from './SidebarLink';
 
 type SidebarContentProps = {
   onClick: () => void;
+  // eslint-disable-next-line react/require-default-props
   $collapse?: boolean;
 };
 
@@ -85,10 +87,12 @@ const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
       </SidebarBlock>
       <SidebarBlock $collapse={$collapse}>
         <SidebarCategory title="Theme" icon="diamond" $collapse={$collapse}>
+          {/* eslint-disable-next-line max-len */}
           {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
           <SidebarNavLink as="button" type="button" onClick={() => changeTheme('light')}>
             <SidebarLinkTitle>Light Theme</SidebarLinkTitle>
           </SidebarNavLink>
+          {/* eslint-disable-next-line max-len */}
           {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
           <SidebarNavLink as="button" type="button" onClick={() => changeTheme('dark')}>
             <SidebarLinkTitle>Dark Theme</SidebarLinkTitle>

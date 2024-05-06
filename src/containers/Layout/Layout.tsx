@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { paddingLeft } from '@/styles/directions';
+import { SIDEBAR_COLLAPSED } from '@/shared/constants/storage';
 import Topbar from './topbar/Topbar';
 import Sidebar from './sidebar/Sidebar';
-import { SIDEBAR_COLLAPSED } from '@/shared/constants/storage';
 
 const Layout = () => {
-  const initSidebarCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED) === 'true' || false;
+  const initSidebarCollapsed =
+    typeof window !== 'undefined' ? localStorage.getItem(SIDEBAR_COLLAPSED) === 'true' : false;
+  // const initSidebarCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED) === 'true' || false;
   const [isSidebarShown, setIsSidebarShown] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(initSidebarCollapsed);
 
@@ -35,7 +36,7 @@ const Layout = () => {
   );
 };
 
-export default withRouter(Layout);
+export default Layout;
 
 // region STYLES
 
