@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import styled from 'styled-components';
 import { colorHover } from '@/styles/palette';
-import icon from '@/shared/img/burger.svg';
 
 type TopbarSidebarButtonProps = {
   onClickDesktop: () => void;
   onClickMobile: () => void;
 };
 
+const IMAGE_SOURCE = '/img/burger.svg';
+
 const TopbarSidebarButton = ({ onClickDesktop, onClickMobile }: TopbarSidebarButtonProps) => (
   <div>
     <TopbarDesktopButton onClick={onClickDesktop} type="button">
-      <TopbarButtonIcon src={icon} alt="" />
+      <TopbarButtonIcon src={IMAGE_SOURCE} alt="" />
     </TopbarDesktopButton>
     <TopbarMobileButton onClick={onClickMobile} type="button">
-      <TopbarButtonIcon src={icon} alt="" />
+      <TopbarButtonIcon src={IMAGE_SOURCE} alt="" />
     </TopbarMobileButton>
   </div>
 );
