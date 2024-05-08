@@ -11,16 +11,21 @@ import {
 import { Button } from '@/shared/components/Button';
 import FormField from '@/shared/components/form/FormHookField';
 import { Controller, useForm } from 'react-hook-form';
+import { useTimezoneManagement } from '@/hooks/usertimezone';
 
 const Setting = () => {
+  const userId = '12345';
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm();
 
+  const { timezones, handleTimezoneChange, timezonesLoading, updatingTimezone } =
+    useTimezoneManagement(userId);
+
   const onSubmit = (data: any) => {
-    console.log('data:', data);
+    console.log('Submitted Data:', data);
   };
 
   return (
@@ -134,6 +139,37 @@ const Setting = () => {
                       defaultValue="admin"
                       placeholder="Reference"
                       isAboveError
+                    />
+                  </FormGroupField>
+                </FormGroup>
+                <FormGroup>
+                  <FormGroupLabel>Timezone</FormGroupLabel>
+                  <FormGroupField>
+                    <Controller
+                      name="timezone"
+                      control={control}
+                      render={({ field }) => (
+                        <select
+                          name="timezone"
+                          value={field.value}
+                          onChange={(e) => {
+                            field.onChange(e.target.value);
+                            handleTimezoneChange(e.target.value);
+                          }}
+                          disabled={timezonesLoading || updatingTimezone}
+                        >
+                          {timezonesLoading ? (
+                            <option>Loading timezones...</option>
+                          ) : (
+                            timezones.map((tz: string) => (
+                              <option key={tz} value={tz}>
+                                {tz}
+                              </option>
+                            ))
+                          )}
+                        </select>
+                      )}
+                      defaultValue=""
                     />
                   </FormGroupField>
                 </FormGroup>
