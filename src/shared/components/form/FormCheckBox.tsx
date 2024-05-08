@@ -21,7 +21,6 @@ type CheckBoxFieldProps = {
   disabled?: boolean;
   $styletype?: string;
   color?: string;
-  register?: any;
 };
 
 export const CheckBoxField = ({

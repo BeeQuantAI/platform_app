@@ -8,7 +8,7 @@
 3. add a `.env` file, and include the following
 
     ```
-    VITE_DEV_SERVER_URL=http://localhost:3000/graphql
+    NEXT_PUBLIC_DEV_SERVER_URL=http://localhost:3000/graphql
     ```
 
 ## Environment Variables

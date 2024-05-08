@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
+'use client';
+
 import { useState } from 'react';
 import { Collapse } from 'react-bootstrap';
 import styled from 'styled-components';
 import { marginLeft, right, left } from '@/styles/directions';
 import { colorBackground, colorHover, colorText, colorBorder } from '@/styles/palette';
-import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
-import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
-
-import Ava from '@/shared/img/ava.png';
 import { useUserContext } from '@/hooks/userHooks';
 import { AUTH_TOKEN } from '@/shared/constants/storage';
+import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
+import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
 
 const TopbarProfile = () => {
   const { store } = useUserContext();
@@ -16,6 +18,7 @@ const TopbarProfile = () => {
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
+    console.log('State Value', isCollapsed);
   };
 
   const logout = () => {
@@ -25,16 +28,27 @@ const TopbarProfile = () => {
 
   return (
     <TopbarProfileWrap>
-      <TopbarAvatarButton type="button" onClick={toggleCollapse}>
-        <TopbarAvatarImage src={Ava} alt="avatar" />
+      <TopbarAvatarButton
+        type="button"
+        onClick={toggleCollapse}
+        aria-controls="collapse-menu"
+        aria-expanded={isCollapsed}
+      >
+        <TopbarAvatarImage src="/img/ava.png" alt="avatar" />
         <TopbarAvatarName>{store ? store.displayName : 'UnAuthorized'}</TopbarAvatarName>
         <TopbarDownIcon />
       </TopbarAvatarButton>
       {isCollapsed && (
-        <TopbarBack type="button" aria-label="profile button" onClick={toggleCollapse} />
+        <TopbarBack
+          type="button"
+          aria-label="profile button"
+          aria-controls="collapse-menu"
+          aria-expanded={isCollapsed}
+          onClick={toggleCollapse}
+        />
       )}
       <Collapse in={isCollapsed}>
-        <TopbarMenuWrap>
+        <TopbarMenuWrap id="collapse-menu">
           <TopbarMenu>
             <TopbarMenuLink
               title="Profile"
