@@ -1,7 +1,8 @@
 'use client';
 
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { useTitle } from '@/hooks/useTitle';
+import { ContentContainer } from '@/components/Container';
 import TotalProfitEarned from './_components/TotalProfitEarned';
 import RecentTransactions from './_components/RecentTransactions';
 import TotalAssets from './_components/TotalAssets';
@@ -11,7 +12,7 @@ const Dashboard = () => {
   useTitle('Dashboard - BeeQuant');
 
   return (
-    <Container>
+    <ContentContainer>
       <Row>
         <Col md={12}>
           <h3 className="page-title">BeeQuant Dashboard</h3>
@@ -23,7 +24,7 @@ const Dashboard = () => {
         <PendingOrders />
         <RecentTransactions />
       </Row>
-    </Container>
+    </ContentContainer>
   );
 };
 

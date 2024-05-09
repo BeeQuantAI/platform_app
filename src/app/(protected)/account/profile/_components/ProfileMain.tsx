@@ -3,7 +3,6 @@ import { Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Card } from '@/shared/components/Card';
 import { left } from '@/styles/directions';
-import Image from 'next/image';
 import { ProfileCard } from './ProfileBasicComponents';
 
 const ProfileMain = () => (
@@ -12,7 +11,7 @@ const ProfileMain = () => (
       <ProfileCard>
         <ProfileInformation>
           <ProfileAvatar>
-            <Image src="/img/ava.png" alt="avatar" />
+            <img src="/img/ava.png" alt="avatar" />
           </ProfileAvatar>
           <ProfileData>
             <ProfileName>Holly Hammond</ProfileName>

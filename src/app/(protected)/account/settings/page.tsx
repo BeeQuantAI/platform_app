@@ -1,6 +1,6 @@
 'use client';
 
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import PasswordField from '@/shared/components/form/Password';
 import { Card, CardBody, CardTitleWrap, CardTitle, CardSubhead } from '@/shared/components/Card';
 import {
@@ -10,6 +10,7 @@ import {
   FormGroupField,
   FormGroupLabel,
 } from '@/shared/components/form/FormElements';
+import { ContentContainer } from '@/components/Container';
 import { Button } from '@/shared/components/Button';
 import FormField from '@/shared/components/form/FormHookField';
 import { Controller, useForm } from 'react-hook-form';
@@ -26,7 +27,7 @@ const Setting = () => {
   };
 
   return (
-    <Container>
+    <ContentContainer>
       <Row>
         <Col md={12} lg={12}>
           <Card>
@@ -153,7 +154,7 @@ const Setting = () => {
           </Card>
         </Col>
       </Row>
-    </Container>
+    </ContentContainer>
   );
 };
 

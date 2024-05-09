@@ -208,10 +208,6 @@ const GlobalStyles = createGlobalStyle`
     text-transform: uppercase;
   }
 
-  .container {
-
-
-  }
 
 
   .rc-slider-tooltip {

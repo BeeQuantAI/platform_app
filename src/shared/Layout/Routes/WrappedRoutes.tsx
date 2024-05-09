@@ -9,7 +9,7 @@ import { colorBackgroundBody } from '@/styles/palette';
 import { ReactNode, useEffect } from 'react';
 import Layout from '@/containers/Layout/Layout';
 
-const ContainerWrap = styled.div`
+export const ContainerWrap = styled.div`
   padding-top: 90px;
   min-height: 100vh;
   transition: padding-left 0.3s;
