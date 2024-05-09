@@ -40,9 +40,9 @@ export const useLoadUser = () => {
       setStore({
         refetchHandler: refetch,
       });
-      console.error('failed retrieving user info, backing to login');
-      if (!pathName.match('/login') && typeof window !== 'undefined') {
-        router.push(`/login?orgUrl=${pathName}`);
+      console.error('failed retrieving user info, backing to landing page');
+      if (!pathName.match('/') && typeof window !== 'undefined') {
+        router.push('/');
       }
     },
   });

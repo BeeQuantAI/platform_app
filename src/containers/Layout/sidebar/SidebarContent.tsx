@@ -112,12 +112,7 @@ const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
         </SidebarCategory>
       </SidebarBlock>
       <SidebarBlock $collapse={$collapse}>
-        <SidebarLink
-          title="Log Out"
-          icon="exit"
-          route={getPublicRouteByKey(ROUTE_KEY.LOGIN).path}
-          onClick={logout}
-        />
+        <SidebarLink title="Log Out" icon="exit" route="/" onClick={logout} />
       </SidebarBlock>
     </SidebarContentWrap>
   );

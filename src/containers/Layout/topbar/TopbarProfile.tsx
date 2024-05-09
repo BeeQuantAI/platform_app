@@ -69,7 +69,7 @@ const TopbarProfile = () => {
               path="/account/settings"
               onClick={toggleCollapse}
             />
-            <TopbarMenuLink title="Log Out" icon="exit" path="/login" onClick={logout} />
+            <TopbarMenuLink title="Log Out" icon="exit" path="/" onClick={logout} />
           </TopbarMenu>
         </TopbarMenuWrap>
       </Collapse>

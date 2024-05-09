@@ -1,7 +1,8 @@
 import React from 'react';
+import HomeContainer from './_components/HomeContainer';
 
 function page() {
-  return <div>Temp Landing Page</div>;
+  return <HomeContainer />;
 }
 
 export default page;
