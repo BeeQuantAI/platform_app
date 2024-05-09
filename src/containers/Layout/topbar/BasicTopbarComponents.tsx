@@ -25,7 +25,7 @@ export const TopbarContainer = styled.div`
   background: ${colorBackground};
 
   @media screen and (max-width: 576px) {
-    min-height: 120px;
+    min-height: 60px;
   }
 `;
 

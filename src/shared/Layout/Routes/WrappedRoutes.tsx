@@ -23,7 +23,7 @@ const ContainerWrap = styled.div`
   }
 
   @media screen and (max-width: 576px) {
-    padding-top: 150px;
+    padding-top: 90px;
   }
 `;
 
