@@ -1485,6 +1485,7 @@ body::-webkit-scrollbar-thumb {
 .deals__table-wrap {
   width: 100%;
   position: relative;
+  overflow-x: auto;
 }
 .deals__table {
   width: 100%;
