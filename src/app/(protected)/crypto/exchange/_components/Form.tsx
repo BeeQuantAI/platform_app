@@ -49,7 +49,11 @@ const WizardForm: React.FC<WizardFormProps> = ({ onSubmit }) => {
             <WizardFormWrap>
               {page === 1 && <StepOne onSubmit={nextPage} defaultValues={data} />}
               {page === 2 && (
-                <StepTwo previousPage={previousPage} onSubmit={nextPage} defaultValues={data} />
+                <StepTwo
+                  previousPage={previousPage}
+                  onSubmit={submitHandler}
+                  defaultValues={data}
+                />
               )}
               {page === 3 && <StepThree />}
             </WizardFormWrap>
