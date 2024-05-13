@@ -11,6 +11,7 @@ import {
   colorGray,
 } from '@/styles/palette';
 import { left, marginLeft, marginRight } from '@/styles/directions';
+import { usePathname } from 'next/navigation';
 
 type SidebarLinkProps = {
   title: string;
@@ -20,24 +21,31 @@ type SidebarLinkProps = {
   onClick?: () => void;
 };
 
-const SidebarLink = ({ title, icon, newLink, route, onClick }: SidebarLinkProps) => (
-  <li>
-    {/* change activeClassName to className since it's not a prop for Link */}
-    <SidebarNavLink href={route} onClick={onClick} className="active">
-      {icon ? <SidebarLinkIcon className={`lnr lnr-${icon}`} /> : ''}
-      <SidebarLinkTitle>
-        {title}
-        {newLink ? (
-          <NewBadge bg="custom">
-            <span>New</span>
-          </NewBadge>
+const SidebarLink = ({ title, icon, newLink, route, onClick }: SidebarLinkProps) => {
+  const pathName = usePathname();
+  return (
+    <li>
+      {/* change activeClassName to className since it's not a prop for Link */}
+      <SidebarNavLink href={route} onClick={onClick}>
+        {icon ? (
+          <SidebarLinkIcon className={`lnr lnr-${icon} ${pathName === route ? 'active' : ''}`} />
         ) : (
           ''
         )}
-      </SidebarLinkTitle>
-    </SidebarNavLink>
-  </li>
-);
+        <SidebarLinkTitle>
+          {title}
+          {newLink ? (
+            <NewBadge bg="custom">
+              <span>New</span>
+            </NewBadge>
+          ) : (
+            ''
+          )}
+        </SidebarLinkTitle>
+      </SidebarNavLink>
+    </li>
+  );
+};
 
 export default SidebarLink;
 
