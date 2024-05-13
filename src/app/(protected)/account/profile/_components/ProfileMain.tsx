@@ -12,7 +12,7 @@ const ProfileMain = () => (
       <ProfileCard>
         <ProfileInformation>
           <ProfileAvatar>
-            <Image src="/img/ava.png" alt="avatar" />
+            <Image src="/img/ava.png" alt="avatar" width={150} height={150} />
           </ProfileAvatar>
           <ProfileData>
             <ProfileName>Holly Hammond</ProfileName>
