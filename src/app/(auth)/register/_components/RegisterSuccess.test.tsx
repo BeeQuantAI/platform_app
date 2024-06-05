@@ -1,10 +1,15 @@
-import { screen, render } from '@testing-library/react';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useUserContext } from '@/hooks/userHooks';
+import { useRouter } from 'next/navigation';
 import RegisterSuccess from './RegisterSuccess';
 
 jest.mock('@/containers/Layout/topbar/BasicTopbarComponents', () => ({
   TopbarDownIcon: () => <div>Mocked TopbarDownIcon</div>,
+}));
+
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
 }));
 
 const mockLocalStorage = (() => {
@@ -25,6 +30,15 @@ const mockLocalStorage = (() => {
 Object.defineProperty(window, 'localStorage', {
   value: mockLocalStorage,
 });
+
+interface MockAppRouterInstance {
+  push: jest.Mock;
+  back?: jest.Mock;
+  forward?: jest.Mock;
+  refresh?: jest.Mock;
+  replace?: jest.Mock;
+  prefetch?: jest.Mock;
+}
 
 jest.mock('@/hooks/userHooks', () => ({
   useUserContext: jest.fn(),
@@ -52,7 +66,7 @@ describe('RegisterSuccess component', () => {
       </Router>
     );
 
-    const successMessage = screen.getByText(/Your registration is successful/i);
+    const successMessage = screen.getByText(/We have sent you a verification email/i);
     expect(successMessage).toBeInTheDocument();
   });
 
@@ -66,14 +80,25 @@ describe('RegisterSuccess component', () => {
     expect(image).toBeInTheDocument();
   });
 
-  it('should render button with correct link', () => {
-    const { getByText } = render(
-      <Router>
-        <RegisterSuccess />
-      </Router>
+  it('triggers router push on button click', async () => {
+    const pushMock = jest.fn();
+
+    const mockRouterInstance: MockAppRouterInstance = {
+      push: pushMock,
+      back: jest.fn(),
+      forward: jest.fn(),
+      refresh: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+    };
+
+    (useRouter as jest.MockedFunction<typeof useRouter>).mockReturnValue(
+      mockRouterInstance as unknown as ReturnType<typeof useRouter>
     );
-    const button = getByText('Back to Login');
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('href', '/login');
+    const { getByText } = render(<RegisterSuccess />);
+    fireEvent.click(getByText('Finished sign-up. Ready to trade'));
+    await waitFor(() => {
+      expect(pushMock).toHaveBeenCalledWith('/login');
+    });
   });
 });

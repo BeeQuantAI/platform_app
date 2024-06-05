@@ -7,14 +7,14 @@ import {
   AccountContent,
   AccountHead,
   AccountLogo,
-  AccountLogoAccent,
+  AccountLogoError,
   AccountTitle,
   AccountWrap,
 } from '@/shared/components/account/AccountElements';
 
-const RegisterSuccess = () => {
+const VerifyFail = ({ error }: { error: string }) => {
   const router = useRouter();
-  const handleFinishedButtonClick = () => {
+  const handleBackToLoginButtonClick = () => {
     router.push('/login');
   };
 
@@ -22,24 +22,26 @@ const RegisterSuccess = () => {
     <AccountWrap>
       <AccountContent>
         <AccountCard>
-          <AccountImage src="img/success.png" alt="success" />
+          <AccountImage src="img/404.png" alt="404" />
           <AccountHead>
             <AccountTitle>
               <AccountLogo>
-                <AccountLogoAccent>
-                  Please check your mailbox
+                <AccountLogoError>
+                  Opps !
                   <br />
-                </AccountLogoAccent>
+                  Verification failed
+                  <br />
+                </AccountLogoError>
               </AccountLogo>
-              We have sent you a verification email
+              {error}
             </AccountTitle>
           </AccountHead>
           {/*
-           @ts-ignore
+          @ts-ignore
            - Ignoring because of complex union types that are not correctly inferred
            */}
-          <AccountButton onClick={handleFinishedButtonClick} variant="outline-primary">
-            Finished sign-up. Ready to trade
+          <AccountButton onClick={handleBackToLoginButtonClick} variant="outline-primary">
+            Back to Login
           </AccountButton>
         </AccountCard>
       </AccountContent>
@@ -47,7 +49,7 @@ const RegisterSuccess = () => {
   );
 };
 
-export default RegisterSuccess;
+export default VerifyFail;
 
 // region STYLES
 

@@ -12,9 +12,9 @@ import {
   AccountWrap,
 } from '@/shared/components/account/AccountElements';
 
-const RegisterSuccess = () => {
+const VerifySuccess = () => {
   const router = useRouter();
-  const handleFinishedButtonClick = () => {
+  const handleBackToLoginButtonClick = () => {
     router.push('/login');
   };
 
@@ -27,19 +27,21 @@ const RegisterSuccess = () => {
             <AccountTitle>
               <AccountLogo>
                 <AccountLogoAccent>
-                  Please check your mailbox
+                  Congratulations !
+                  <br />
+                  Email Verified
                   <br />
                 </AccountLogoAccent>
               </AccountLogo>
-              We have sent you a verification email
+              Your registration is successful
             </AccountTitle>
           </AccountHead>
           {/*
-           @ts-ignore
+          @ts-ignore
            - Ignoring because of complex union types that are not correctly inferred
            */}
-          <AccountButton onClick={handleFinishedButtonClick} variant="outline-primary">
-            Finished sign-up. Ready to trade
+          <AccountButton onClick={handleBackToLoginButtonClick} variant="outline-primary">
+            Back to Login
           </AccountButton>
         </AccountCard>
       </AccountContent>
@@ -47,7 +49,7 @@ const RegisterSuccess = () => {
   );
 };
 
-export default RegisterSuccess;
+export default VerifySuccess;
 
 // region STYLES
 

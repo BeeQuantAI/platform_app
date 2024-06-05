@@ -21,6 +21,7 @@ import { USER_LOGIN } from '@/graphql/auth';
 import { AUTH_TOKEN, EMAIL } from '@/shared/constants/storage';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { useRouter } from 'next/navigation';
+import Loading from '@/shared/components/Loading';
 import LogInForm from './_components/LogInForm';
 
 const Login = () => {
@@ -28,8 +29,10 @@ const Login = () => {
   const [error, setError] = useState('');
   const originUrl = useSearchParams().get('orgUrl');
   const [login] = useMutation(USER_LOGIN);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (data: { email: string; password: string; remember_me: boolean }) => {
+    setIsLoading(true);
     const result = await login({
       variables: data,
     });
@@ -56,42 +59,47 @@ const Login = () => {
     } else {
       // for login failed
       setError(`Login failed: ${result.data.login.message}`);
+      setIsLoading(false);
     }
   };
 
   return (
     <AccountWrap>
-      <AccountContent>
-        <AccountCard>
-          <AccountHead>
-            <AccountTitle>
-              Welcome to
-              <br />
-              <AccountLogo>
-                BeeQuant
-                <AccountLogoAccent> AI</AccountLogoAccent>
-              </AccountLogo>
-            </AccountTitle>
-            <h4 className="subhead">Trading smart, trading with BeeQuant AI</h4>
-          </AccountHead>
-          <LogInForm onSubmit={onSubmit} error={error} />
-          <AccountOr>
-            <p>Or Easily Using</p>
-          </AccountOr>
-          <AccountSocial>
-            {/* @ts-ignore - Ignoring because of complex union types incorrectly inferred */}
-            <AccountSocialButtonFacebook
-              className="account__social-btn account__social-btn--facebook"
-              to="/login"
-            >
-              <FacebookIcon />
-            </AccountSocialButtonFacebook>
-            <AccountSocialButtonGoogle to="/login">
-              <GooglePlusIcon />
-            </AccountSocialButtonGoogle>
-          </AccountSocial>
-        </AccountCard>
-      </AccountContent>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <AccountContent>
+          <AccountCard>
+            <AccountHead>
+              <AccountTitle>
+                Welcome to
+                <br />
+                <AccountLogo>
+                  BeeQuant
+                  <AccountLogoAccent> AI</AccountLogoAccent>
+                </AccountLogo>
+              </AccountTitle>
+              <h4 className="subhead">Trading smart, trading with BeeQuant AI</h4>
+            </AccountHead>
+            <LogInForm onSubmit={onSubmit} error={error} />
+            <AccountOr>
+              <p>Or Easily Using</p>
+            </AccountOr>
+            <AccountSocial>
+              {/* @ts-ignore - Ignoring because of complex union types incorrectly inferred */}
+              <AccountSocialButtonFacebook
+                className="account__social-btn account__social-btn--facebook"
+                to="/login"
+              >
+                <FacebookIcon />
+              </AccountSocialButtonFacebook>
+              <AccountSocialButtonGoogle to="/login">
+                <GooglePlusIcon />
+              </AccountSocialButtonGoogle>
+            </AccountSocial>
+          </AccountCard>
+        </AccountContent>
+      )}
     </AccountWrap>
   );
 };
