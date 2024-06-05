@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import { Alert } from 'react-bootstrap';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import PasswordField from '@/shared/components/form/Password';
 import {
   FormGroup,
@@ -35,6 +36,10 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
     formState: { errors },
   } = useForm();
   const rememberMe = watch('rememberMe');
+  const router = useRouter();
+  const handleRegisterButtonClick = () => {
+    router.push('/register');
+  };
 
   useEffect(() => {
     if (rememberMe !== undefined && typeof window !== 'undefined') {
@@ -122,8 +127,8 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
       <AccountButton variant="primary" type="submit">
         Sign In
       </AccountButton>
-      <AccountButton variant="outline-primary" to="/register">
-        <Link href="register">Create Account</Link>
+      <AccountButton onClick={handleRegisterButtonClick} variant="outline-primary">
+        Create Account
       </AccountButton>
     </LoginForm>
   );

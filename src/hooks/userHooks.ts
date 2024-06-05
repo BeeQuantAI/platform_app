@@ -31,7 +31,12 @@ export const useLoadUser = () => {
           displayName,
           refetchHandler: refetch,
         });
-        if (pathName.match('/login') && typeof window !== 'undefined') {
+        if (
+          pathName.match('/login') &&
+          pathName.match('/register') &&
+          !pathName.match('/verify-email') &&
+          typeof window !== 'undefined'
+        ) {
           router.push('/dashboard');
         }
       }
@@ -41,7 +46,12 @@ export const useLoadUser = () => {
         refetchHandler: refetch,
       });
       console.error('failed retrieving user info, backing to login');
-      if (!pathName.match('/login') && typeof window !== 'undefined') {
+      if (
+        !pathName.match('/login') &&
+        !pathName.match('/register') &&
+        !pathName.match('/verify-email') &&
+        typeof window !== 'undefined'
+      ) {
         router.push(`/login?orgUrl=${pathName}`);
       }
     },

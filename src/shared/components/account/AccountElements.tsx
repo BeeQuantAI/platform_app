@@ -8,6 +8,7 @@ import {
   colorBlueHover,
   colorDarkRed,
   colorDustyWhite,
+  colorLightRed,
   colorLightText,
   colorVeryLightRed,
   colorWhite,
@@ -71,6 +72,10 @@ export const AccountLogo = styled.span`
 
 export const AccountLogoAccent = styled.span`
   color: ${colorBlue};
+`;
+
+export const AccountLogoError = styled.span`
+  color: ${colorLightRed};
 `;
 
 export const AccountOr = styled.div`
