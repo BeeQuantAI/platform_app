@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
-import { Link } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Link from 'next/link';
 import DownIcon from 'mdi-react/ChevronDownIcon';
 import {
   colorIcon,
@@ -24,7 +25,7 @@ export const TopbarContainer = styled.div`
   background: ${colorBackground};
 
   @media screen and (max-width: 576px) {
-    min-height: 120px;
+    min-height: 60px;
   }
 `;
 
