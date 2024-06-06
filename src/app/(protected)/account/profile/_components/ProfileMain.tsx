@@ -241,4 +241,3 @@ const ProfileText = styled.p`
 `;
 
 // endregion
-
