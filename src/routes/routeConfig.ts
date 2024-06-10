@@ -1,21 +1,18 @@
-import Dashboard from '@/containers/Dashboard';
-import ExchangeManagement from '@/containers/ExchangeManagement';
-import Profile from '@/containers/Account/Profile';
-import Page404 from '@/containers/404';
-import Login from '@/containers/Login';
-import Register from '@/containers/Register';
-import Settings from '@/containers/Account/Settings';
-import BotDashboard from '@/containers/Bot/Dashboard';
-import BotManagement from '@/containers/Bot/Management';
-import CryptoExchanges from '@/containers/Cryptoeconomy/CryptoExchanges';
-import CryptoPrices from '@/containers/Cryptoeconomy/CryptoPrices';
-import ExchangeDetails from '@/containers/Cryptoeconomy/ExchangeDetails';
-import PriceDetails from '@/containers/Cryptoeconomy/PriceDetails';
-import BotDetail from '@/containers/Bot/BotDetails';
-import BotCreate from '@/containers/Bot/BotCreate';
-import ResetPasswordInitiationPage from '@/containers/ResetPasswor/init/init';
-import ResetPasswordForm from '@/containers/ResetPasswor/reset/form';
-import PasswordResetLinkSentPage from '@/containers/ResetPasswor/success/success';
+import Page404 from 'app/not-found';
+import Dashboard from 'app/(protected)/dashboard/page';
+import ExchangeManagement from 'app/(protected)/exchange/page';
+import Profile from 'app/(protected)/account/profile/page';
+import Login from 'app/(auth)/login/page';
+import Register from 'app/(auth)/register/page';
+import Settings from 'app/(protected)/account/settings/page';
+import BotDashboard from 'app/(protected)/bot/dashboard/page';
+import BotManagement from 'app/(protected)/bot/management/page';
+import CryptoExchanges from 'app/(protected)/crypto/exchange/page';
+import CryptoPrices from 'app/(protected)/crypto/price/page';
+import ExchangeDetails from 'app/(protected)/crypto/exchange/details/page';
+import PriceDetails from 'app/(protected)/crypto/price/details/page';
+import BotDetail from 'app/(protected)/bot/details/page';
+import BotCreate from 'app/(protected)/bot/create/page';
 
 interface IRoute {
   path: string;
@@ -139,13 +136,13 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     component: BotDetail,
   },
   [ROUTE_KEY.CRYPTO_EXCHANGES]: {
-    path: '/crypto/exchanges',
+    path: '/crypto/exchange',
     name: 'Exchanges',
     title: 'Exchanges - BeeQuant',
     component: CryptoExchanges,
   },
   [ROUTE_KEY.CRYPTO_PRICES]: {
-    path: '/crypto/prices',
+    path: '/crypto/price',
     name: 'Prices',
     title: 'Prices - BeeQuant',
     component: CryptoPrices,

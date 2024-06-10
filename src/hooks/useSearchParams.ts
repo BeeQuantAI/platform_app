@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface ReadOnlyURLSearchParams extends URLSearchParams {
   append: never;
@@ -12,7 +12,8 @@ interface ReadOnlyURLSearchParams extends URLSearchParams {
  *  Hooks for getting url search params
  */
 export function useSearchParams() {
-  const { search } = useLocation();
+  // const { search } = useLocation();
+  const pathName = usePathname();
 
-  return useMemo(() => new URLSearchParams(search) as ReadOnlyURLSearchParams, [search]);
+  return useMemo(() => new URLSearchParams(pathName) as ReadOnlyURLSearchParams, [pathName]);
 }
