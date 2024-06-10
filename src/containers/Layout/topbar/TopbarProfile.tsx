@@ -9,6 +9,7 @@ import { marginLeft, right, left } from '@/styles/directions';
 import { colorBackground, colorHover, colorText, colorBorder } from '@/styles/palette';
 import { useUserContext } from '@/hooks/userHooks';
 import { AUTH_TOKEN } from '@/shared/constants/storage';
+import Image from 'next/image';
 import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
 import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
 
@@ -18,7 +19,6 @@ const TopbarProfile = () => {
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
-    console.log('State Value', isCollapsed);
   };
 
   const logout = () => {
@@ -34,7 +34,9 @@ const TopbarProfile = () => {
         aria-controls="collapse-menu"
         aria-expanded={isCollapsed}
       >
-        <TopbarAvatarImage src="/img/ava.png" alt="avatar" />
+        <TopbarAvatarImageBox>
+          <Image src="/img/ava.png" alt="avatar" width={36} height={36} />
+        </TopbarAvatarImageBox>
         <TopbarAvatarName>{store ? store.displayName : 'UnAuthorized'}</TopbarAvatarName>
         <TopbarDownIcon />
       </TopbarAvatarButton>
@@ -123,7 +125,7 @@ const TopbarAvatarButton = styled.button`
   }
 `;
 
-const TopbarAvatarImage = styled.img`
+const TopbarAvatarImageBox = styled.div`
   margin: auto 0;
   border-radius: 50%;
   height: 36px;
