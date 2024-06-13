@@ -1,7 +1,7 @@
+import { act } from 'react-dom/test-utils';
 import { screen, render, fireEvent } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import ResetPasswordForm from './form';
-import { act } from 'react-dom/test-utils';
 
 interface PasswordFieldProps {
   input: {

@@ -1,7 +1,7 @@
+import { act } from 'react-dom/test-utils';
 import { screen, render, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ResetPasswordInitiationPage from './page';
-import { act } from 'react-dom/test-utils';
 
 interface IconProps {
   className?: string;
