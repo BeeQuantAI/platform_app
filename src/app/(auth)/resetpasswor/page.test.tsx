@@ -1,11 +1,7 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ResetPasswordInitiationPage from './init';
+import ResetPasswordInitiationPage from './page';
 import { act } from 'react-dom/test-utils';
-
-jest.mock('styled-theming', () => ({
-  default: jest.fn().mockImplementation((_, values) => values.mode),
-}));
 
 interface IconProps {
   className?: string;
@@ -33,6 +29,21 @@ jest.mock('mdi-react/AccountOutlineIcon', () => {
     default: () => <div>Mocked Account Outline Icon</div>,
   };
 });
+
+jest.mock('./_components/form', () => ({
+  __esModule: true,
+  default: ({ onSuccess }: { onSuccess: () => void }) => (
+    <div>
+      Mocked Reset Password Form
+      <button onClick={onSuccess}>Mock Submit</button>
+    </div>
+  ),
+}));
+
+jest.mock('./_components/success', () => ({
+  __esModule: true,
+  default: () => <div>Mocked Reset Password Success</div>,
+}));
 
 describe('ResetPasswordInitiationPage', () => {
   it('should render the page and show the correct title', async () => {
@@ -74,5 +85,32 @@ describe('ResetPasswordInitiationPage', () => {
       fireEvent.change(input, { target: { value: 'user@example.com' } });
       fireEvent.click(button);
     });
+
+    const form = screen.getByText('Mocked Reset Password Form');
+    expect(form).toBeInTheDocument();
+  });
+
+  it('should navigate to the success page after form submission', async () => {
+    render(
+      <Router>
+        <ResetPasswordInitiationPage />
+      </Router>
+    );
+
+    const input = screen.getByPlaceholderText('Email');
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    await act(async () => {
+      fireEvent.change(input, { target: { value: 'user@example.com' } });
+      fireEvent.click(button);
+    });
+
+    const formButton = screen.getByText('Mock Submit');
+    await act(async () => {
+      fireEvent.click(formButton);
+    });
+
+    const successMessage = screen.getByText('Mocked Reset Password Success');
+    expect(successMessage).toBeInTheDocument();
   });
 });

@@ -1,31 +1,7 @@
 import { screen, render, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
 import ResetPasswordForm from './form';
 import { act } from 'react-dom/test-utils';
-
-jest.mock('styled-theming', () => ({
-  default: jest.fn().mockImplementation((_, values) => values.mode),
-}));
-
-interface IconProps {
-  className?: string;
-}
-
-jest.mock('mdi-react/TrendingUpIcon', () => {
-  return {
-    __esModule: true,
-    default: ({ className }: IconProps) => <div className={className}>Mocked Trending Up Icon</div>,
-  };
-});
-
-jest.mock('mdi-react/TrendingDownIcon', () => {
-  return {
-    __esModule: true,
-    default: ({ className }: IconProps) => (
-      <div className={className}>Mocked Trending Down Icon</div>
-    ),
-  };
-});
 
 interface PasswordFieldProps {
   input: {
@@ -49,9 +25,10 @@ jest.mock('@/shared/components/form/Password', () => {
     keyIcon,
   }) => (
     <div>
-      <label>{placeholder}</label>
+      <label htmlFor={input.name}>{placeholder}</label>
       <input
-        type={keyIcon ? 'text' : 'password'}
+        id={input.name}
+        type="password"
         name={input.name}
         value={input.value}
         onChange={input.onChange}
@@ -69,20 +46,26 @@ jest.mock('@/shared/components/form/Password', () => {
 });
 
 describe('ResetPasswordForm', () => {
-  it('should render the page and show the correct title', () => {
+  const mockOnSuccess = jest.fn();
+
+  it('should render the form and show password fields', () => {
     render(
       <Router>
-        <ResetPasswordForm />
+        <ResetPasswordForm onSuccess={mockOnSuccess} />
       </Router>
     );
-    const title = screen.getByText(/Reset Password/i);
-    expect(title).toBeInTheDocument();
+
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const confirmPasswordInput = screen.getByPlaceholderText('Confirm Password');
+
+    expect(passwordInput).toBeInTheDocument();
+    expect(confirmPasswordInput).toBeInTheDocument();
   });
 
   it('should allow user to enter and confirm password', async () => {
     render(
       <Router>
-        <ResetPasswordForm />
+        <ResetPasswordForm onSuccess={mockOnSuccess} />
       </Router>
     );
 
@@ -92,20 +75,17 @@ describe('ResetPasswordForm', () => {
     fireEvent.change(passwordInput, { target: { value: 'Password@123' } });
     fireEvent.change(confirmPasswordInput, { target: { value: 'Password@123' } });
 
-    const passwordInputs = screen.getAllByDisplayValue('Password@123');
-
-    expect(passwordInputs.length).toBe(2);
-    passwordInputs.forEach((input) => {
-      expect(input).toBeInTheDocument();
-    });
+    expect(passwordInput).toHaveValue('Password@123');
+    expect(confirmPasswordInput).toHaveValue('Password@123');
   });
 
   it('should show error if passwords do not match', async () => {
     render(
       <Router>
-        <ResetPasswordForm />
+        <ResetPasswordForm onSuccess={mockOnSuccess} />
       </Router>
     );
+
     const passwordInput = screen.getByPlaceholderText('Password');
     const confirmPasswordInput = screen.getByPlaceholderText('Confirm Password');
     const submitButton = screen.getByRole('button', { name: 'Submit' });
@@ -120,12 +100,13 @@ describe('ResetPasswordForm', () => {
     expect(alert).toBeInTheDocument();
   });
 
-  it('should not navigate if the passwords do not match', async () => {
+  it('should not call onSuccess if the passwords do not match', async () => {
     render(
       <Router>
-        <ResetPasswordForm />
+        <ResetPasswordForm onSuccess={mockOnSuccess} />
       </Router>
     );
+
     const passwordInput = screen.getByPlaceholderText('Password');
     const confirmPasswordInput = screen.getByPlaceholderText('Confirm Password');
     const submitButton = screen.getByRole('button', { name: 'Submit' });
@@ -136,6 +117,26 @@ describe('ResetPasswordForm', () => {
       fireEvent.click(submitButton);
     });
 
-    expect(screen.queryByText(/Password updated/i)).not.toBeInTheDocument();
+    expect(mockOnSuccess).not.toHaveBeenCalled();
+  });
+
+  it('should call onSuccess if the passwords match', async () => {
+    render(
+      <Router>
+        <ResetPasswordForm onSuccess={mockOnSuccess} />
+      </Router>
+    );
+
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const confirmPasswordInput = screen.getByPlaceholderText('Confirm Password');
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
+
+    await act(async () => {
+      fireEvent.change(passwordInput, { target: { value: 'Password@123' } });
+      fireEvent.change(confirmPasswordInput, { target: { value: 'Password@123' } });
+      fireEvent.click(submitButton);
+    });
+
+    expect(mockOnSuccess).toHaveBeenCalled();
   });
 });

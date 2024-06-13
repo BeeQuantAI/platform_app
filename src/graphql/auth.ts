@@ -19,3 +19,13 @@ export const USER_REGISTER = gql`
     }
   }
 `;
+
+export const USER_RESETPASSWOR = gql`
+  mutation Resetpasswor($input: CreateUserInput!) {
+    resetpasswor(input: $input) {
+      code
+      message
+      data
+    }
+  }
+`;
