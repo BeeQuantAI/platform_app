@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import { client } from 'boot/apollo';
 import { ReactNode } from 'react';
 import ScrollToTop from '@/styles/ScrollToTop';
+import I18nWrapper from '@/i18n/I18n-wrapper';
 import LoadUser from '../shared/components/LoadUser';
 import StyledComponentsRegistry from './_lib/registry';
 
@@ -16,7 +17,9 @@ const Providers: React.FC<Props> = ({ children }) => (
   <ApolloProvider client={client}>
     <StyledComponentsRegistry>
       <ScrollToTop>
-        <LoadUser>{children}</LoadUser>
+        <LoadUser>
+          <I18nWrapper>{children}</I18nWrapper>
+        </LoadUser>
       </ScrollToTop>
     </StyledComponentsRegistry>
   </ApolloProvider>

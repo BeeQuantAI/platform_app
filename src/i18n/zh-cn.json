@@ -1,0 +1,80 @@
+{
+  "route-key-name": {
+    "dashboard": "中控台",
+    "bots": {
+      "category-name": "自动交易程序",
+      "bot-dashboard": "自动交易程序中控台",
+      "bot-management": "管理",
+      "bot-create": "创建",
+      "bot-details": "自动交易程序细节"
+    },
+    "cryptoeconomy": {
+      "category-name": "加密经济",
+      "crypto-prices": "价格",
+      "crypto-prices-details": "价格详细信息",
+      "crypto-exchange": "交易所",
+      "crypto-exchange-details": "交易所详细信息"
+    },
+    "theme": {
+      "category-name": "主题",
+      "light-theme": "浅色",
+      "dark-theme": "暗色"
+    },
+    "account": {
+      "category-name": "帐户",
+      "account-profile": "个人资料",
+      "exchange-management": "交易管理",
+      "app-setting": "应用程序设置"
+    },
+    "log-out": "登出"
+  },
+  "login": {
+    "account-title": "欢迎来到",
+    "account-logo": "BeeQuant",
+    "account-logo-accent": "AI",
+    "h4-subhead": "使用BeeQuant AI智能交易",
+    "account-or": "或轻松使用",
+    "login-form": {
+      "form-group-label-email": "电邮",
+      "form-group-label-password": "密码",
+      "account-forgot-password": "忘记密码?",
+      "button-sign-in": "登录",
+      "button-register": "创建帐户"
+    }
+  },
+  "registry": {
+    "account-title": "欢迎来到",
+    "account-logo": "BeeQuant",
+    "account-logo-accent": "AI",
+    "h4-subhead": "使用BeeQuant AI智能交易",
+    "account-have-account": "已有帐户？",
+    "link-login": "登录"
+  },
+  "account": {
+    "profile": {},
+    "setting": {
+      "card-title": "设置",
+      "card-subhead": "更新您的个人资料",
+      "form-group-label-real-name": "真实姓名",
+      "form-group-label-display-name": "显示名称",
+      "form-group-label-email": "电子邮件",
+      "form-group-lablel-password": "密码",
+      "form-group-lablel-mobile": "Mobile",
+      "form-group-lablel-reference": "参考",
+      "button-submit": "提交",
+      "button-cancel": "取消"
+    }
+  },
+  "appsetting": {
+    "card-title": "系统设置",
+    "card-subhead": "更新您的系统设置",
+    "form-group-label-language": "语言",
+    "form-group-label-theme": "布景主题",
+    "option-light": "浅色",
+    "option-dark": "暗色"
+  },
+  "bot": {},
+  "crypto": {},
+  "dashboard": {},
+  "exchange": {}
+}

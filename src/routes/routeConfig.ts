@@ -13,6 +13,7 @@ import ExchangeDetails from 'app/(protected)/crypto/exchange/details/page';
 import PriceDetails from 'app/(protected)/crypto/price/details/page';
 import BotDetail from 'app/(protected)/bot/details/page';
 import BotCreate from 'app/(protected)/bot/create/page';
+import AppSetting from 'app/(protected)/appsetting/page';
 
 interface IRoute {
   path: string;
@@ -38,6 +39,7 @@ export const ROUTE_KEY = {
   CRYPTO_PRICES: 'crypto_prices',
   CRYPTO_EXCHANGE_DETAILS: 'crypto_exchange_detail',
   CRYPTO_PRICE_DETAILS: 'crypto_price_detail',
+  APP_SETTING: 'app_setting',
 };
 
 export const PUBLIC_ROUTE_CONFIG: Record<string, IRoute> = {
@@ -139,6 +141,12 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     name: 'Settings',
     title: 'Settings - BeeQuant',
     component: Settings,
+  },
+  [ROUTE_KEY.APP_SETTING]: {
+    path: '/appsetting',
+    name: 'App Setting',
+    title: 'AppSetting - BeeQuant',
+    component: AppSetting,
   },
 };
 
