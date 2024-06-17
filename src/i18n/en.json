@@ -1,0 +1,80 @@
+{
+  "route-key-name": {
+    "dashboard": "Dashboard",
+    "bots": {
+      "category-name": "Bots",
+      "bot-dashboard": "Bots Dashboard",
+      "bot-management": "Bots Management",
+      "bot-create": "Bot Create",
+      "bot-details": "Bot Details"
+    },
+    "cryptoeconomy": {
+      "category-name": "Cryptoeconomy",
+      "crypto-prices": "Prices",
+      "crypto-prices-details": "Price Details",
+      "crypto-exchange": "Exchanges",
+      "crypto-exchange-details": "Exchange Details"
+    },
+    "theme": {
+      "category-name": "Theme",
+      "light-theme": "Light Theme",
+      "dark-theme": "Dark Theme"
+    },
+    "account": {
+      "category-name": "Account",
+      "account-profile": "Profile",
+      "exchange-management": "Exchange Management",
+      "app-setting": "App Setting"
+    },
+    "log-out": "Log Out"
+  },
+  "login": {
+    "account-title": "Welcome to",
+    "account-logo": "BeeQuant",
+    "account-logo-accent": "AI",
+    "h4-subhead": "Trading smart, trading with BeeQuant AI",
+    "account-or": "Or Easily Using",
+    "login-form": {
+      "form-group-label-email": "Email",
+      "form-group-label-password": "Password",
+      "account-forgot-password": "Forgot a password?",
+      "button-sign-in": "Sign In",
+      "button-register": "Create Account"
+    }
+  },
+  "registry": {
+    "account-title": "Welcome to",
+    "account-logo": "BeeQuant",
+    "account-logo-accent": "AI",
+    "h4-subhead": "Trading smart, trading with BeeQuant AI",
+    "account-have-account": "Already have an account?",
+    "link-login": "Login"
+  },
+  "account": {
+    "profile": {},
+    "setting": {
+      "card-title": "Settings",
+      "card-subhead": "Update your profile",
+      "form-group-label-real-name": "Real Name",
+      "form-group-label-display-name": "Display Name",
+      "form-group-label-email": "Email",
+      "form-group-lablel-password": "Password",
+      "form-group-lablel-mobile": "Mobile",
+      "form-group-lablel-reference": "Reference",
+      "button-submit": "Submit",
+      "button-cancel": "Cancel"
+    }
+  },
+  "appsetting": {
+    "card-title": "App Settings",
+    "card-subhead": "Change your app settings",
+    "form-group-label-language": "Language",
+    "form-group-label-theme": "Theme",
+    "option-light": "Light",
+    "option-dark": "Dark"
+  },
+  "bot": {},
+  "crypto": {},
+  "dashboard": {},
+  "exchange": {}
+}

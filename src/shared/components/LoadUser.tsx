@@ -1,3 +1,5 @@
+'use client';
+
 import { connect, useLoadUser } from '@/hooks/userHooks';
 import { IPropChild } from '@/utils/types';
 import Loading from './Loading';
