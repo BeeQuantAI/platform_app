@@ -17,6 +17,8 @@ export const GET_USER = gql`
     getUserInfo {
       id
       displayName
+      email
+      ref
     }
   }
 `;
