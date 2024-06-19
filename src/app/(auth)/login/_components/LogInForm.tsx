@@ -95,7 +95,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
             defaultValue=""
           />
           <AccountForgotPassword>
-            <Link href="login">Forgot a password?</Link>
+            <Link href="resetpasswor">Forgot a password?</Link>
           </AccountForgotPassword>
         </FormGroupField>
       </FormGroup>
