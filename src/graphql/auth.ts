@@ -19,3 +19,13 @@ export const USER_REGISTER = gql`
     }
   }
 `;
+
+export const USER_CHANGE_PASSWORD = gql`
+  mutation ChangePassword($input: UpdatePasswordInput!) {
+    changePassword(input: $input) {
+      code
+      message
+      data
+    }
+  }
+`;
