@@ -1,6 +1,5 @@
-import { gql } from '@apollo/client';
-
-export const USER_LOGIN = gql`
+import { gql } from './codegen/';
+export const USER_LOGIN = gql(`
   mutation Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       code
@@ -8,9 +7,9 @@ export const USER_LOGIN = gql`
       data
     }
   }
-`;
+`);
 
-export const USER_REGISTER = gql`
+export const USER_REGISTER = gql(`
   mutation Register($input: CreateUserInput!) {
     register(input: $input) {
       code
@@ -18,4 +17,4 @@ export const USER_REGISTER = gql`
       data
     }
   }
-`;
+`);
