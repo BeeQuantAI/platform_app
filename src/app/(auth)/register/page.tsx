@@ -37,11 +37,11 @@ const Register = () => {
       },
     });
 
-    if (result.data.register.code === 200) {
+    if (result.data?.register.code === 200) {
       setIsRegistered(true);
     }
     // for register failed
-    setError(`Register failed: ${result.data.register.message}`);
+    setError(`Register failed: ${result.data?.register.message}`);
   };
 
   if (isRegistered) {

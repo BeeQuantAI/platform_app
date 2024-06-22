@@ -16,7 +16,10 @@
     "test:watch": "jest --watchAll",
     "coverage": "yarn test --coverage --watchAll",
     "format:check": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:write": "prettier --write .",
+    "generate": "graphql-codegen",
+    "prestart": "yarn generate",
+    "predev": "yarn generate"
   },
   "dependencies": {
     "@apollo/client": "^3.8.6",
@@ -58,8 +61,11 @@
   "devDependencies": {
     "@apollo/server": "^4.9.5",
     "@faker-js/faker": "^8.2.0",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.3.0",
     "@graphql-tools/mock": "^9.0.0",
     "@graphql-tools/schema": "^10.0.0",
+    "@parcel/watcher": "^2.4.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.5",
     "@testing-library/user-event": "^14.5.2",
