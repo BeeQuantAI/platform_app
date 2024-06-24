@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "set PORT=5173 && next dev",
+    "dev": "next dev --turbo -p 5173",
+    "start": "next start -p 5173",
     "build": "next build",
     "lint": "next lint",
     "mock": "node ./mock/index.js",
@@ -45,6 +46,7 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "recharts": "^2.12.6",
+    "sharp": "^0.33.3",
     "smooth-scrollbar": "^8.8.4",
     "smooth-scrollbar-react": "^2.4.1",
     "styled-components": "^6.1.0",
