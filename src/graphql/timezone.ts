@@ -7,7 +7,7 @@ export const GET_TIMEZONES = gql`
 `;
 
 export const UPDATE_TIMEZONE = gql`
-  mutation UpdateTimezone($userId: ID!, $timezone: String!) {
+  mutation UpdateTimezone($userId: String!, $timezone: String!) {
     updateTimezone(userId: $userId, timezone: $timezone) {
       success
       message
