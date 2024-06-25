@@ -59,6 +59,10 @@ const Login = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_URL}/auth/google`;
+  };
+
   return (
     <AccountWrap>
       <AccountContent>
@@ -86,7 +90,8 @@ const Login = () => {
             >
               <FacebookIcon />
             </AccountSocialButtonFacebook>
-            <AccountSocialButtonGoogle to="/login">
+            {/* <AccountSocialButtonGoogle to="http://localhost:3000/auth/google"> */}
+            <AccountSocialButtonGoogle onClick={handleGoogleLogin}>
               <GooglePlusIcon />
             </AccountSocialButtonGoogle>
           </AccountSocial>
