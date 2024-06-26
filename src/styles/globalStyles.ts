@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0 !important;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'Poppins', sans-serif; 
     font-size: 13px;
     line-height: 1.6;
   }
@@ -215,7 +215,6 @@ const GlobalStyles = createGlobalStyle`
       max-width: 1630px;
     }
   }
-
 
   .rc-slider-tooltip {
     padding-bottom: 2px;
