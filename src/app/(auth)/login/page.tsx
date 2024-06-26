@@ -33,18 +33,18 @@ const Login = () => {
     const result = await login({
       variables: data,
     });
-    if (result.data.login.code === 200) {
+    if (result.data && result.data.login.code === 200) {
       // refresh store after login success
       // store.refetchHandler();
       if (typeof window !== 'undefined') {
         if (data.remember_me) {
           sessionStorage.setItem(AUTH_TOKEN, '');
           localStorage.setItem(EMAIL, data.email);
-          localStorage.setItem(AUTH_TOKEN, result.data.login.data);
+          localStorage.setItem(AUTH_TOKEN, result.data.login.data ?? '');
         } else {
           localStorage.setItem(EMAIL, '');
           localStorage.setItem(AUTH_TOKEN, '');
-          sessionStorage.setItem(AUTH_TOKEN, result.data.login.data);
+          sessionStorage.setItem(AUTH_TOKEN, result.data.login.data ?? '');
         }
       }
       if (originUrl && originUrl !== '/') {
@@ -55,7 +55,7 @@ const Login = () => {
       }
     } else {
       // for login failed
-      setError(`Login failed: ${result.data.login.message}`);
+      setError(`Login failed: ${result.data?.login.message}`);
     }
   };
 
