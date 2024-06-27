@@ -26,3 +26,12 @@ export const UPDATE_USER = gql(`
     updateUser(id: $id, input: $input)
   }
 `);
+
+export const CREATE_USER_EXCHANGE = gql(`
+  mutation CreateUserExchange($input: CreateUserExchangeInput!) {
+    createUserExchange(input: $input) {
+      code
+      message
+    }
+  }
+`);

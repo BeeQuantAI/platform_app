@@ -23,6 +23,8 @@ const documents = {
     types.GetUserByIdDocument,
   '\n  mutation updateUser($id: String!, $input: UpdateUserInput!) {\n    updateUser(id: $id, input: $input)\n  }\n':
     types.UpdateUserDocument,
+  '\n  mutation CreateUserExchange($input: CreateUserExchangeInput!) {\n    createUserExchange(input: $input) {\n      code\n      message\n    }\n  }\n':
+    types.CreateUserExchangeDocument,
 };
 
 /**
@@ -69,6 +71,12 @@ export function gql(
 export function gql(
   source: '\n  mutation updateUser($id: String!, $input: UpdateUserInput!) {\n    updateUser(id: $id, input: $input)\n  }\n'
 ): (typeof documents)['\n  mutation updateUser($id: String!, $input: UpdateUserInput!) {\n    updateUser(id: $id, input: $input)\n  }\n'];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+  source: '\n  mutation CreateUserExchange($input: CreateUserExchangeInput!) {\n    createUserExchange(input: $input) {\n      code\n      message\n    }\n  }\n'
+): (typeof documents)['\n  mutation CreateUserExchange($input: CreateUserExchangeInput!) {\n    createUserExchange(input: $input) {\n      code\n      message\n    }\n  }\n'];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
