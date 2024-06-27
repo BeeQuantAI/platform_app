@@ -60,7 +60,8 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_URL}/auth/google`;
+    // window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_URL}/auth/google`;
+    window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_URL}`;
   };
 
   return (
