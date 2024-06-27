@@ -69,8 +69,6 @@ export type ExchangeKey = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  /** Change password */
-  changePassword: Result;
   /** Create exchange key */
   createExchangeKey: Scalars['Boolean']['output'];
   /** Create new user */
@@ -87,10 +85,6 @@ export type Mutation = {
   updateExchangeKey: Scalars['Boolean']['output'];
   /** Update user info */
   updateUser: Scalars['Boolean']['output'];
-};
-
-export type MutationChangePasswordArgs = {
-  input: UpdatePasswordInput;
 };
 
 export type MutationCreateExchangeKeyArgs = {
@@ -165,13 +159,6 @@ export type UpdateExchangeKeyInput = {
   remarks?: InputMaybe<Scalars['String']['input']>;
   /** Secret key */
   secretKey: Scalars['String']['input'];
-};
-
-export type UpdatePasswordInput = {
-  /** New Password */
-  newPassword: Scalars['String']['input'];
-  /** Old Password */
-  oldPassword: Scalars['String']['input'];
 };
 
 export type UpdateUserInput = {

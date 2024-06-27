@@ -27,6 +27,7 @@ export const FormGroupField = styled.div`
 export const FormGroupLabel = styled.span`
   margin-bottom: 4px;
   display: inline-block;
+  position: relative;
   color: ${colorText};
 
   span {
@@ -74,7 +75,9 @@ export const FormContainer = styled.form<{
   direction: ${direction};
 
   input,
-  textarea {
+  textarea,
+  select {
+    -webkit-appearance: none;
     width: 100%;
     padding: 5px 10px;
     font-size: 12px;
