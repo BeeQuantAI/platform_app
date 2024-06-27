@@ -20,17 +20,26 @@ export type Scalars = {
   Float: { input: number; output: number };
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: { input: any; output: any };
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: { input: any; output: any };
 };
 
-export type CreateExchangeKeyInput = {
-  /** Access key */
+/** Input type for creating a user-exchange connection for an exchange account */
+export type CreateUserExchangeInput = {
+  /** Access key for connecting to the exchange */
   accessKey: Scalars['String']['input'];
-  /** Exchange name */
+  /** Name of the exchange */
   exchangeName: Scalars['String']['input'];
-  /** Remarks */
-  remarks?: InputMaybe<Scalars['String']['input']>;
-  /** Secret key */
+  /** Name of this new user-exchange connection */
+  name: Scalars['String']['input'];
+  /** Secret key for connecting to the exchange */
   secretKey: Scalars['String']['input'];
+};
+
+export type CreateUserExchangeResponse = {
+  __typename?: 'CreateUserExchangeResponse';
+  code: Scalars['Int']['output'];
+  message?: Maybe<Scalars['String']['output']>;
 };
 
 export type CreateUserInput = {
@@ -56,25 +65,29 @@ export type ExchangeKey = {
   createdBy?: Maybe<Scalars['String']['output']>;
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
   deletedBy?: Maybe<Scalars['String']['output']>;
-  /** Exchange name */
-  exchangeName: Scalars['String']['output'];
   id: Scalars['String']['output'];
-  /** Remarks */
-  remarks: Scalars['String']['output'];
   /** Secret key */
   secretKey: Scalars['String']['output'];
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedBy?: Maybe<Scalars['String']['output']>;
 };
 
+export type ExchangeType = {
+  __typename?: 'ExchangeType';
+  /** Exchange ID */
+  id: Scalars['String']['output'];
+  /** Exchange name */
+  name: Scalars['String']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change password */
   changePassword: Result;
-  /** Create exchange key */
-  createExchangeKey: Scalars['Boolean']['output'];
   /** Create new user */
   createUser: Scalars['Boolean']['output'];
+  /** Create a user exchange connection */
+  createUserExchange: CreateUserExchangeResponse;
   /** Hard delete an user */
   deleteUser: Scalars['Boolean']['output'];
   /** Hard delete an user key */
@@ -93,12 +106,12 @@ export type MutationChangePasswordArgs = {
   input: UpdatePasswordInput;
 };
 
-export type MutationCreateExchangeKeyArgs = {
-  input: CreateExchangeKeyInput;
-};
-
 export type MutationCreateUserArgs = {
   input: CreateUserInput;
+};
+
+export type MutationCreateUserExchangeArgs = {
+  input: CreateUserExchangeInput;
 };
 
 export type MutationDeleteUserArgs = {
@@ -127,10 +140,14 @@ export type Query = {
   __typename?: 'Query';
   /** Find exchange key by id */
   getExchangeKeyById: ExchangeKey;
+  /** Get all exchanges */
+  getExchanges: Array<ExchangeType>;
   /** Find user by email */
   getUserByEmail: UserType;
   /** Find user by id */
   getUserById: UserType;
+  /** Get balances for user exchange connections */
+  getUserExchangeBalances: Array<UserExchangePublic>;
   /** Find user by context */
   getUserInfo: UserType;
   /** Get all users */
@@ -159,10 +176,6 @@ export type Result = {
 export type UpdateExchangeKeyInput = {
   /** Access key */
   accessKey: Scalars['String']['input'];
-  /** Exchange name */
-  exchangeName: Scalars['String']['input'];
-  /** Remarks */
-  remarks?: InputMaybe<Scalars['String']['input']>;
   /** Secret key */
   secretKey: Scalars['String']['input'];
 };
@@ -185,6 +198,14 @@ export type UpdateUserInput = {
   realName?: InputMaybe<Scalars['String']['input']>;
   /** User is referred by */
   ref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UserExchangePublic = {
+  __typename?: 'UserExchangePublic';
+  /** Balance data */
+  balance?: Maybe<Scalars['JSON']['output']>;
+  /** The name of the exchange account connection provided by user */
+  name: Scalars['String']['output'];
 };
 
 export type UserType = {
