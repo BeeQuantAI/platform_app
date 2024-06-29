@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FacebookIcon from 'mdi-react/FacebookIcon';
 import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
 import {
@@ -16,8 +16,8 @@ import {
   AccountTitle,
   AccountWrap,
 } from '@/shared/components/account/AccountElements';
-import { useMutation } from '@apollo/client';
-import { USER_LOGIN } from '@/graphql/auth';
+import { useMutation, useQuery } from '@apollo/client';
+import { USER_LOGIN, GET_GOOGLE_OAUTH_URL, GOOGLE_LOGIN } from '@/graphql/auth';
 import { AUTH_TOKEN, EMAIL } from '@/shared/constants/storage';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { useRouter } from 'next/navigation';
@@ -28,6 +28,8 @@ const Login = () => {
   const [error, setError] = useState('');
   const originUrl = useSearchParams().get('orgUrl');
   const [login] = useMutation(USER_LOGIN);
+  const getOAuthUrlQuery = useQuery(GET_GOOGLE_OAUTH_URL);
+  const [googleLogin] = useMutation(GOOGLE_LOGIN);
 
   const onSubmit = async (data: { email: string; password: string; remember_me: boolean }) => {
     const result = await login({
@@ -59,9 +61,69 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      googleLogin({
+        variables: { code },
+      })
+        .then((result) => {
+          if (result.data.googleLogin.code === 200) {
+            if (typeof window !== 'undefined') {
+              localStorage.setItem(EMAIL, '');
+              localStorage.setItem(AUTH_TOKEN, '');
+              sessionStorage.setItem(AUTH_TOKEN, result.data.googleLogin.data);
+            }
+            if (originUrl && originUrl !== '/') {
+              router.back();
+            } else {
+              router.push('dashboard');
+            }
+          } else {
+            setError(`Google account sign in failed: ${result.data.googleLogin.message}`);
+          }
+        })
+        .catch((err) => setError(`Google account sign in failed: ${err.message}`));
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   const fetchAndAuthenticateUser = async () => {
+  //     const urlParams = new URLSearchParams(window.location.search);
+  //     const code = urlParams.get('code');
+  //     if (!code) return;
+  //     try {
+  //       const getUserRes = await getGoogleUser({ variables: { code } });
+  //       const userData = getUserRes.data.getGoogleUser;
+  //       if (userData) {
+  //         const loginResult = await googleLogin({
+  //           variables: { userData }
+  //         });
+  //         if (loginResult.data.googleLogin.code === 200) {
+  //           if (typeof window !== 'undefined') {
+  //             localStorage.setItem('EMAIL', userData.email);
+  //             localStorage.setItem('AUTH_TOKEN', userData.accessToken);
+  //             sessionStorage.setItem('AUTH_TOKEN', loginResult.data.googleLogin.data);
+  //           }
+  //           if (originUrl && originUrl !== '/') {
+  //             router.back();
+  //           } else {
+  //             router.push('/dashboard');
+  //           }
+  //         } else {
+  //           setError(`Google account sign in failed: ${loginResult.data.googleLogin.message}`);
+  //         }
+  //       }
+  //     } catch (err) {
+  //       setError(`Google account sign in failed: ${err}`);
+  //     }
+  //   };
+  //   fetchAndAuthenticateUser();
+  // }, [getGoogleUser, googleLogin, router]);
+
   const handleGoogleLogin = () => {
-    // window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_URL}/auth/google`;
-    window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_SIGNIN_URL}`;
+    window.location.href = getOAuthUrlQuery.data.getGoogleOAuthUrl;
   };
 
   return (

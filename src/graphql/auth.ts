@@ -19,3 +19,40 @@ export const USER_REGISTER = gql`
     }
   }
 `;
+
+export const GET_GOOGLE_OAUTH_URL = gql`
+  query GetGoogleOAuthUrl {
+    getGoogleOAuthUrl
+  }
+`;
+
+export const GOOGLE_LOGIN = gql`
+  mutation GoogleLogin($code: String!) {
+    googleLogin(code: $code) {
+      code
+      message
+      data
+    }
+  }
+`;
+
+// export const GET_GOOGLE_USER = gql`
+//   mutation GetGoogleUser($code: String!) {
+//     getGoogleUser(code: $code) {
+//       email
+//       name
+//       picture
+//       accessToken
+//     }
+//   }
+// `;
+
+// export const GOOGLE_LOGIN = gql`
+//   mutation GoogleLogin($oauthLoginUserInput: OAuthLoginUserInput!) {
+//     googleLogin(oauthLoginUserInput: $oauthLoginUserInput) {
+//       code
+//       message
+//       data
+//     }
+//   }
+// `;
