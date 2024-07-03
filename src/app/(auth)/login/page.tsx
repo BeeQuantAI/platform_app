@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FacebookIcon from 'mdi-react/FacebookIcon';
 import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
 import {
@@ -59,6 +59,28 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    if (token) {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(EMAIL, '');
+        localStorage.setItem(AUTH_TOKEN, '');
+        sessionStorage.setItem(AUTH_TOKEN, token ?? '');
+      }
+      if (originUrl && originUrl !== '/') {
+        router.back();
+      } else {
+        router.push('dashboard');
+      }
+    }
+  }, [router, originUrl]);
+
+  const handleThirdPartyLogin = (provider: string) => {
+    const thirdPartyApiUrl = process.env.THIRD_PARTY_API_URL;
+    window.location.href = `${thirdPartyApiUrl}/${provider}`;
+  };
+
   return (
     <AccountWrap>
       <AccountContent>
@@ -82,11 +104,11 @@ const Login = () => {
             {/* @ts-ignore - Ignoring because of complex union types incorrectly inferred */}
             <AccountSocialButtonFacebook
               className="account__social-btn account__social-btn--facebook"
-              to="/login"
+              onClick={() => handleThirdPartyLogin('facebook')}
             >
               <FacebookIcon />
             </AccountSocialButtonFacebook>
-            <AccountSocialButtonGoogle to="/login">
+            <AccountSocialButtonGoogle onClick={() => handleThirdPartyLogin('google')}>
               <GooglePlusIcon />
             </AccountSocialButtonGoogle>
           </AccountSocial>
