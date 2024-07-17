@@ -1,54 +1,26 @@
-'use client';
-
-import { useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
-import { Alert } from 'react-bootstrap';
-import Link from 'next/link';
-import PasswordField from '@/shared/components/form/Password';
 import {
   FormGroup,
   FormGroupField,
   FormGroupIcon,
   FormGroupLabel,
 } from '@/shared/components/form/FormElements';
+import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import FormField from '@/shared/components/form/FormHookField';
-import {
-  AccountButton,
-  AccountForgotPassword,
-  LoginForm,
-} from '@/shared/components/account/AccountElements';
 import { emailPattern } from '@/shared/utils/helpers';
-import { CheckBoxField } from '@/shared/components/form/FormCheckBox';
 import { EMAIL, REMEMBER_ME } from '@/shared/constants/storage';
-
-type LogInFormProps = {
-  onSubmit: (data: any) => void;
-  error: string;
-};
-
-const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
+import { Controller, useFormContext } from 'react-hook-form';
+import PasswordField from '@/shared/components/form/Password';
+import { AccountForgotPassword } from '@/shared/components/account/AccountElements';
+import Link from 'next/link';
+import { CheckBoxField } from '@/shared/components/form/FormCheckBox';
+export default function LoginFormGroup() {
   const {
-    handleSubmit,
     control,
-    watch,
     formState: { errors },
-  } = useForm();
-  const rememberMe = watch('rememberMe');
-
-  useEffect(() => {
-    if (rememberMe !== undefined && typeof window !== 'undefined') {
-      localStorage.setItem(REMEMBER_ME, rememberMe);
-    }
-  }, [rememberMe]);
-
+  } = useFormContext();
   const localEmail = typeof window !== 'undefined' ? localStorage.getItem(EMAIL) : null;
-
   return (
-    <LoginForm onSubmit={handleSubmit(onSubmit)}>
-      <Alert className="w-100" variant="danger" show={!!error}>
-        {error}
-      </Alert>
+    <>
       <FormGroup>
         <FormGroupLabel>Email</FormGroupLabel>
         <FormGroupField>
@@ -105,7 +77,7 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
             control={control}
             name="remember_me"
             defaultValue={
-              typeof window !== 'undefined' ? localStorage.getItem(REMEMBER_ME) === 'true' : ''
+              typeof window !== 'undefined' ? localStorage.getItem(REMEMBER_ME) === 'true' : false
             }
             render={({ field: { onChange, value } }) => (
               <CheckBoxField
@@ -118,15 +90,6 @@ const LogInForm = ({ onSubmit, error = '' }: LogInFormProps) => {
           />
         </FormGroupField>
       </FormGroup>
-      {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
-      <AccountButton variant="primary" type="submit">
-        Sign In
-      </AccountButton>
-      <Link href="/register" passHref className="w-100">
-        <AccountButton variant="outline-primary">Create Account</AccountButton>
-      </Link>
-    </LoginForm>
+    </>
   );
-};
-
-export default LogInForm;
+}

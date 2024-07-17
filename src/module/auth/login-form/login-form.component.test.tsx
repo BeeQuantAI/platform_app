@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/client/testing';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { USER_LOGIN } from '@/graphql/auth';
-import Login from './page';
+import Login from './login-form.component';
 
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(() => ({
