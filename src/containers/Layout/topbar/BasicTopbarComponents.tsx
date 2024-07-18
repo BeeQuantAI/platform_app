@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Link from 'next/link';
 import DownIcon from 'mdi-react/ChevronDownIcon';
 import {
   colorIcon,
@@ -29,13 +28,6 @@ export const TopbarContainer = styled.div`
   }
 `;
 
-export const TopbarLeft = styled.div`
-  position: absolute;
-  display: flex;
-  height: 100%;
-  ${left}: 0;
-`;
-
 export const TopbarRight = styled.div`
   position: absolute;
   display: flex;
@@ -52,6 +44,14 @@ export const TopbarRight = styled.div`
   }
 `;
 
+export const TopbarLeft = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  ${left}: 0;
+`;
+
 export const TopbarRightOver = styled.div`
   display: flex;
   flex: auto;
@@ -59,7 +59,7 @@ export const TopbarRightOver = styled.div`
   height: 60px;
 `;
 
-export const TopbarLogo = styled(Link)`
+export const TopbarLogo = styled.a`
   width: 150px;
   height: 32px;
   margin: auto 0;
