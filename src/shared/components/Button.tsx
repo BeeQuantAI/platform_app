@@ -2,6 +2,7 @@ import {
   Button as BootstrapButton,
   ButtonToolbar as BootstrapButtonToolbar,
   ButtonGroup as BootstrapButtonGroup,
+  ButtonProps,
 } from 'react-bootstrap';
 import styled from 'styled-components';
 import { darken } from 'polished';
@@ -107,7 +108,7 @@ const getBorderRadius = (rounded: boolean, squared: boolean) => {
   }
 };
 
-export const Button = styled(BootstrapButton)`
+export const Button = styled(BootstrapButton)<ButtonProps>`
   border-radius: ${(props) => getBorderRadius(props.rounded, props.squared)};
   padding: ${(props) => getPaddings(props.size)};
   margin-bottom: 20px;
@@ -117,7 +118,7 @@ export const Button = styled(BootstrapButton)`
   overflow: hidden;
   z-index: 0;
   ${marginRight}: 15px;
-  background-color: ${(props) => getBackgroundColor(props.variant) || 'transparent'};
+  background-color: ${(props) => getBackgroundColor(props.variant) ?? 'transparent'};
   border: 1px solid;
   border-color: ${(props) => getColor(props.variant)};
   color: ${(props) => getTextColor(props.variant)};

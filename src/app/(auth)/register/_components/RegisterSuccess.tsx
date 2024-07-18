@@ -29,9 +29,9 @@ const RegisterSuccess = () => (
           </AccountTitle>
         </AccountHead>
         {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
-        <AccountButton variant="outline-primary">
-          <Link href="/login">Back to Login</Link>
-        </AccountButton>
+        <Link href="/login" passHref>
+          <AccountButton variant="outline-primary">Back to Login</AccountButton>
+        </Link>
       </AccountCard>
     </AccountContent>
   </AccountWrap>

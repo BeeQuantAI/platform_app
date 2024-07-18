@@ -74,6 +74,7 @@ describe('RegisterSuccess component', () => {
     );
     const button = getByText('Back to Login');
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('href', '/login');
+    const linkElement = button.closest('a');
+    expect(linkElement).toHaveAttribute('href', '/login');
   });
 });
