@@ -1,6 +1,7 @@
-import { ROUTE_KEY } from '@/routes/routeConfig';
+import { ROUTE_KEY, getRouteByKey } from '@/routes/routeConfig';
 import TopbarSidebarButton from './TopbarSidebarButton';
 import TopbarProfile from './TopbarProfile';
+import Link from 'next/link';
 import {
   TopbarContainer,
   TopbarLeft,
@@ -21,7 +22,9 @@ const Topbar = ({ changeMobileSidebarVisibility, changeSidebarVisibility }: Topb
         onClickMobile={changeMobileSidebarVisibility}
         onClickDesktop={changeSidebarVisibility}
       />
-      <TopbarLogo href={ROUTE_KEY.DASHBOARD} />
+      <Link href={getRouteByKey(ROUTE_KEY.DASHBOARD).path} passHref>
+        <TopbarLogo />
+      </Link>
     </TopbarLeft>
     <TopbarRight>
       <TopbarSearchWrap>
