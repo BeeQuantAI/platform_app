@@ -1,19 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import FacebookIcon from 'mdi-react/FacebookIcon';
-import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
 import {
   AccountCard,
   AccountContent,
-  AccountHead,
-  AccountLogo,
-  AccountLogoAccent,
-  AccountOr,
-  AccountSocial,
-  AccountSocialButtonFacebook,
-  AccountSocialButtonGoogle,
-  AccountTitle,
   AccountWrap,
 } from '@/shared/components/account/AccountElements';
 import { useMutation } from '@apollo/client';
@@ -22,6 +12,8 @@ import { AUTH_TOKEN, EMAIL } from '@/shared/constants/storage';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { useRouter } from 'next/navigation';
 import LogInForm from './_components/LogInForm';
+import AccountHeader from '../_components/AccountHeader';
+import AccountFooter from '../_components/AccountFooter';
 
 const Login = () => {
   const router = useRouter();
@@ -63,33 +55,9 @@ const Login = () => {
     <AccountWrap>
       <AccountContent>
         <AccountCard>
-          <AccountHead>
-            <AccountTitle>
-              Welcome to
-              <br />
-              <AccountLogo>
-                BeeQuant
-                <AccountLogoAccent> AI</AccountLogoAccent>
-              </AccountLogo>
-            </AccountTitle>
-            <h4 className="subhead">Trading smart, trading with BeeQuant AI</h4>
-          </AccountHead>
+          <AccountHeader />
           <LogInForm onSubmit={onSubmit} error={error} />
-          <AccountOr>
-            <p>Or Easily Using</p>
-          </AccountOr>
-          <AccountSocial>
-            {/* @ts-ignore - Ignoring because of complex union types incorrectly inferred */}
-            <AccountSocialButtonFacebook
-              className="account__social-btn account__social-btn--facebook"
-              to="/login"
-            >
-              <FacebookIcon />
-            </AccountSocialButtonFacebook>
-            <AccountSocialButtonGoogle to="/login">
-              <GooglePlusIcon />
-            </AccountSocialButtonGoogle>
-          </AccountSocial>
+          <AccountFooter isLogin={true} />
         </AccountCard>
       </AccountContent>
     </AccountWrap>

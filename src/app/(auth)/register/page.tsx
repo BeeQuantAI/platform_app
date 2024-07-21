@@ -4,19 +4,15 @@ import { useState } from 'react';
 import {
   AccountCard,
   AccountContent,
-  AccountHaveAccount,
-  AccountHead,
-  AccountLogo,
-  AccountLogoAccent,
-  AccountTitle,
   AccountWrap,
 } from '@/shared/components/account/AccountElements';
 import { useMutation } from '@apollo/client';
 import { USER_REGISTER } from '@/graphql/auth';
 import { useTitle } from '@/hooks/useTitle';
-import Link from 'next/link';
 import RegisterForm from './_components/RegisterForm';
 import RegisterSuccess from './_components/RegisterSuccess';
+import AccountHeader from '../_components/AccountHeader';
+import AccountFooter from '../_components/AccountFooter';
 
 const Register = () => {
   const [register] = useMutation(USER_REGISTER);
@@ -52,24 +48,9 @@ const Register = () => {
     <AccountWrap>
       <AccountContent>
         <AccountCard>
-          <AccountHead>
-            <AccountTitle>
-              Welcome to
-              <br />
-              <AccountLogo>
-                BeeQuant
-                <AccountLogoAccent> AI</AccountLogoAccent>
-              </AccountLogo>
-            </AccountTitle>
-            <h4 className="subhead">Trading smart, trading with BeeQuant AI</h4>
-          </AccountHead>
+          <AccountHeader />
           <RegisterForm onSubmit={onSubmit} error={error} />
-          <AccountHaveAccount>
-            <p>
-              Already have an account?
-              <Link href="/login">Login</Link>
-            </p>
-          </AccountHaveAccount>
+          <AccountFooter isLogin={false} />
         </AccountCard>
       </AccountContent>
     </AccountWrap>
