@@ -27,7 +27,7 @@ const SidebarCategory = ({ title, icon, isNew, children, $collapse }: SidebarCat
         </SidebarLinkTitle>
         {!$collapse && <SidebarCategoryChevron className="lnr lnr-chevron-right" open={isOpen} />}
       </SidebarCategoryButton>
-      <Collapse in={$collapse || isOpen}>
+      <Collapse in={isOpen}>
         <SidebarSubmenuWrap>
           <SidebarSubmenu>{children}</SidebarSubmenu>
         </SidebarSubmenuWrap>

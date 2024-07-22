@@ -59,7 +59,7 @@ export const TopbarRightOver = styled.div`
   height: 60px;
 `;
 
-export const TopbarLogo = styled.a`
+export const TopbarLogo = styled.div`
   width: 150px;
   height: 32px;
   margin: auto 0;
