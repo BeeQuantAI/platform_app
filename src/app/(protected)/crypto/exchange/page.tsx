@@ -1,11 +1,8 @@
 'use client';
 
 import { Col, Container, Row } from 'react-bootstrap';
-import { useTitle } from '@/hooks/useTitle';
 
 const CryptoExchanges = () => {
-  useTitle('Exchanges - BeeQuant');
-
   return (
     <Container>
       <Row>
