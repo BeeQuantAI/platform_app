@@ -175,7 +175,6 @@ const SidebarBlock = styled.ul<{ $collapse?: boolean }>`
         
         span:last-of-type {
           opacity: 0;
-          transition: 0.3s;
         }
   
         ${SidebarLinkTitle} {
