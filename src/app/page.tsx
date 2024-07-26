@@ -1,7 +1,12 @@
-import React from 'react';
+import Dashboard from '@/app/(protected)/dashboard/page.tsx';
+import { WrappedRoutes } from '@/shared/Layout/Routes/WrappedRoutes';
 
 function page() {
-  return <div>Temp Landing Page</div>;
+  return (
+    <WrappedRoutes>
+      <Dashboard />
+    </WrappedRoutes>
+  );
 }
 
 export default page;
