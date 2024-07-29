@@ -9,6 +9,8 @@ import {
   colorRed,
   colorBackgroundBody,
   scrollbarStyles,
+  colorVeryLightRed,
+  colorDarkRed,
 } from '@/styles/palette';
 import { left, borderLeft, paddingLeft } from '@/styles/directions';
 
@@ -43,7 +45,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ul, ol {
-    // doesn't do RTL, it break a sidebar
     padding-left: 15px;
     margin-bottom: 0;
   }
@@ -70,7 +71,6 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: 8px;
   }
 
-  //TYPOGRAPHY
   p, h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     font-weight: 400;
@@ -209,13 +209,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .container {
-
     @media screen and (min-width: 768px) {
       width: 100%;
       max-width: 1630px;
     }
   }
-
 
   .rc-slider-tooltip {
     padding-bottom: 2px;
@@ -240,6 +238,24 @@ const GlobalStyles = createGlobalStyle`
     &.rc-slider-tooltip-hidden {
       display: block;
     }
+  }
+
+  .alert {
+    font-size: 14px;
+    padding: 16px;
+    width: calc(100% - 10px);
+    margin: 0 auto 16px auto;
+    border-radius: 5px;
+    text-align: center;
+    background-color: ${colorVeryLightRed};
+    color: ${colorDarkRed};
+    border: 1px solid #f5c6cb;
+  }
+
+  .alert-danger {
+    background-color: ${colorVeryLightRed};
+    color: ${colorDarkRed};
+    border-color: #f5c6cb;
   }
 `;
 
