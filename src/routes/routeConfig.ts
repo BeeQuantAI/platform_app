@@ -1,3 +1,4 @@
+import React from 'react';
 import Page404 from 'app/not-found';
 import Dashboard from 'app/(protected)/dashboard/page';
 import ExchangeManagement from 'app/(protected)/exchange/page';
@@ -18,7 +19,7 @@ interface IRoute {
   path: string;
   name: string;
   title: string;
-  component: () => JSX.Element;
+  component: React.ComponentType;
 }
 
 export const ROUTE_KEY = {
