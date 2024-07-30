@@ -77,9 +77,9 @@ const FormLayout = () => {
         <AccountButton variant="primary" type="submit">
           Sign In
         </AccountButton>
-        <AccountButton variant="outline-primary" to="/register">
-          <Link href="register">Create Account</Link>
-        </AccountButton>
+        <Link href="/register" passHref className="w-100">
+          <AccountButton variant="outline-primary">Create Account</AccountButton>
+        </Link>
       </LoginForm>
     </FormProvider>
   );
