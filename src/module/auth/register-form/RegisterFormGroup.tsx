@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import { Alert } from 'react-bootstrap';
