@@ -17,7 +17,8 @@
       "@/constants/*": ["shared/constants/*"],
       "@/containers/*": ["containers/*"],
       "@/routes/*": ["routes/*"],
-      "@/components/*": ["shared/components/*"]
+      "@/components/*": ["shared/components/*"],
+      "@/app/*": ["app/*"],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
