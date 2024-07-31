@@ -1,6 +1,6 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { useUserContext } from '@/hooks/userHooks';
-import RegisterForm from './RegisterForm';
+import RegisterForm from './RegisterFormGroup';
 
 const mockLocalStorage = (() => {
   let store: Record<string, string> = {};
