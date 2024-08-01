@@ -239,10 +239,10 @@ export const FormFieldButton = styled.button<{ $active?: string }>`
   align-items: center;
   justify-content: center;
   &:hover {
-    background: ${(props) => (props.$active ? colorBlueHover : colorFieldsBorder)};
+    background: ${(props) => (props.$active ? colorBlueDarkHover : colorFieldsBorder)};
   }
   &:active {
-    background-color: ${(props) => (props.$active ? colorBlueDarkHover : colorFieldsBorder)};
+    background-color: ${(props) => (props.$active ? colorBlueHover : colorFieldsBorder)};
   }
   svg {
     fill: ${(props) => (props.$active ? colorWhite : colorAdditional)};
