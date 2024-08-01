@@ -132,6 +132,7 @@ export const colorRedHover = darken(0.1, colorRed);
 export const colorBlue = '#70bbfd';
 export const colorLightBlue = '#87c3f7';
 export const colorBlueHover = darken(0.1, colorBlue);
+export const colorBlueDarkHover = darken(0.3, colorBlue);
 
 export const colorBlack = '#000000';
 export const colorGray = '#787985';
