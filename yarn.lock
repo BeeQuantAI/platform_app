@@ -7,7 +7,7 @@
   resolved "https://registry.npmjs.org/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@adobe/css-tools@^4.3.2":
+"@adobe/css-tools@^4.0.1", "@adobe/css-tools@^4.3.2":
   version "4.3.3"
   resolved "https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.3.3.tgz"
   integrity sha512-rE0Pygv0sEZ4vBWHlAgJLGDU7Pm8xoO6p3wsEceb7GYAjScrOHpEo8KK/eVkAcnSM+slAEtXjA2JpdjLp4fJQQ==
@@ -6593,6 +6593,13 @@ jest-snapshot@^29.7.0:
     pretty-format "^29.7.0"
     semver "^7.5.3"
 
+jest-styled-components@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/jest-styled-components/-/jest-styled-components-7.2.0.tgz#67e768b98d3d58513341a62baca76f3e253a4deb"
+  integrity sha512-gwyyveNjvuRA0pyhbQoydXZllLZESs2VuL5fXCabzh0buHPAOUfANtW7n5YMPmdC0sH3VB7h2eUGZ23+tjvaBA==
+  dependencies:
+    "@adobe/css-tools" "^4.0.1"
+
 jest-transform-stub@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/jest-transform-stub/-/jest-transform-stub-2.0.0.tgz"
@@ -7167,6 +7174,13 @@ minimatch@^9.0.1:
   integrity sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==
   dependencies:
     brace-expansion "^2.0.1"
+
+minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz"
+  integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
+  dependencies:
+    brace-expansion "^1.1.7"
 
 minimist@^1.2.0, minimist@^1.2.6:
   version "1.2.8"
