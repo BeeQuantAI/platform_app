@@ -7,6 +7,8 @@ import {
   colorFieldsBorder,
   colorText,
   colorWhite,
+  colorBlueHover,
+  colorBlueDarkHover,
 } from '@/styles/palette';
 import { left, paddingLeft, direction, marginLeft, marginRight } from '@/styles/directions';
 import { ButtonToolbar } from '../Button';
@@ -236,7 +238,12 @@ export const FormFieldButton = styled.button<{ $active?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  &:hover {
+    background: ${(props) => (props.$active ? colorBlueDarkHover : colorFieldsBorder)};
+  }
+  &:active {
+    background-color: ${(props) => (props.$active ? colorBlueHover : colorFieldsBorder)};
+  }
   svg {
     fill: ${(props) => (props.$active ? colorWhite : colorAdditional)};
     width: 18px;
