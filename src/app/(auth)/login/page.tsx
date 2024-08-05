@@ -77,7 +77,7 @@ const Login = () => {
   }, [router, originUrl]);
 
   const handleThirdPartyLogin = (provider: string) => {
-    const thirdPartyApiUrl = process.env.THIRD_PARTY_API_URL;
+    const thirdPartyApiUrl = process.env.NEXT_PUBLIC_THIRD_PARTY_API_URL;
     window.location.href = `${thirdPartyApiUrl}/${provider}`;
   };
 
