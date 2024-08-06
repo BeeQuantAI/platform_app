@@ -9,7 +9,7 @@
 
     ```
     NEXT_PUBLIC_DEV_SERVER_URL=http://localhost:3000/graphql
-    THIRD_PARTY_API_URL=http://localhost:3000/auth
+    NEXT_PUBLIC_THIRD_PARTY_API_URL=http://localhost:3000/auth
     ```
 
 ## Environment Variables
