@@ -4,12 +4,12 @@ import {
   FormGroupField,
   FormGroupLabel,
 } from '@/shared/components/form/FormElements';
-import { useState } from 'react';
 import { FieldErrors } from 'react-hook-form';
 import styled from 'styled-components';
 import EyeIcon from 'mdi-react/EyeIcon';
 import Error from '@/shared/components/form/Error';
-import FormIcon from './_component/FormIcon';
+import { useState } from 'react';
+import FormIcon from './FormIcon';
 
 interface FormInputProps {
   placeholder: string;
@@ -32,7 +32,12 @@ export default function FormPasswordInput({
       <FormGroupField>
         <FormIcon name={name} />
         <FormInputWrap>
-          <input placeholder={placeholder} type={passwordShown ? 'text' : 'password'} {...field} />
+          <input
+            aria-label={placeholder}
+            placeholder={placeholder}
+            type={passwordShown ? 'text' : 'password'}
+            {...field}
+          />
           {errors[name] && <Error error={errors[name]?.message as string} $top={isAboveError} />}
         </FormInputWrap>
         <FormFieldButton

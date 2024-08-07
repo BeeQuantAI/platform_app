@@ -28,3 +28,7 @@ export enum PasswordErrorMsgs {
 export enum RefErrorMsgs {
   Required = 'Referral code is required',
 }
+
+export enum PasswordCompareErrorMsgs {
+  NotMatch = 'Passwords do not match',
+}

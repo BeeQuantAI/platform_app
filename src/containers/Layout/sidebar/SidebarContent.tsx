@@ -105,6 +105,11 @@ const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
             onClick={onClick}
           />
           <SidebarLink
+            title={getRouteByKey(ROUTE_KEY.ACCOUNT_MANAGEMENT).name}
+            route={getRouteByKey(ROUTE_KEY.ACCOUNT_MANAGEMENT).path}
+            onClick={onClick}
+          />
+          <SidebarLink
             title={getRouteByKey(ROUTE_KEY.EXCHANGE_MANAGEMENT).name}
             route={getRouteByKey(ROUTE_KEY.EXCHANGE_MANAGEMENT).path}
             onClick={onClick}

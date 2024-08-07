@@ -9,6 +9,10 @@ interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   theme?: string;
 }
 
+interface CardTitleWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  $marginBottom?: string;
+}
+
 export const Card = styled(BootstrapCard)`
   width: 100%;
   padding-bottom: 30px;
@@ -25,12 +29,11 @@ export const CardBody = styled(Card.Body)`
   padding: 20px;
 `;
 
-export const CardTitleWrap = styled.div`
-  margin-bottom: 30px;
+export const CardTitleWrap = styled.div<CardTitleWrapperProps>`
+  margin-bottom: ${(props) => props.$marginBottom || '30px'};
   text-transform: uppercase;
   position: relative;
   text-align: ${left};
-
   &:not(:first-child) {
     margin-top: 40px;
   }

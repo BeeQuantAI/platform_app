@@ -13,6 +13,8 @@ import ExchangeDetails from 'app/(protected)/crypto/exchange/details/page';
 import PriceDetails from 'app/(protected)/crypto/price/details/page';
 import BotDetail from 'app/(protected)/bot/details/page';
 import BotCreate from 'app/(protected)/bot/create/page';
+import AccountManagement from 'app/(protected)/account/management/page';
+import ChangePassword from 'app/(protected)/account/update/password/page';
 
 interface IRoute {
   path: string;
@@ -26,6 +28,8 @@ export const ROUTE_KEY = {
   DASHBOARD: 'dashboard',
   EXCHANGE_MANAGEMENT: 'exchange_management',
   ACCOUNT_PROFILE: 'account_profile',
+  ACCOUNT_MANAGEMENT: 'account_management',
+  CHANGE_PASSWORD: 'change_password',
   PAGE_404: 'page_404',
   LOGIN: 'login',
   REGISTER: 'register',
@@ -85,6 +89,18 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     name: 'Profile',
     title: 'Profile - BeeQuant',
     component: Profile,
+  },
+  [ROUTE_KEY.ACCOUNT_MANAGEMENT]: {
+    path: '/account/management',
+    name: 'Account Management',
+    title: 'Account Management - BeeQuant',
+    component: AccountManagement,
+  },
+  [ROUTE_KEY.CHANGE_PASSWORD]: {
+    path: '/account/update/password',
+    name: 'Reset Password',
+    title: 'Reset Password - BeeQuant',
+    component: ChangePassword,
   },
   [ROUTE_KEY.BOT_DASHBOARD]: {
     path: '/bot/dashboard',

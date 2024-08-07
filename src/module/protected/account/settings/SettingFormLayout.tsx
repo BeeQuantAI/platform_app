@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/shared/components/Button';
 import * as z from 'zod';
 import { DisplayErrorMsgs, EmailErrorMsgs, RefErrorMsgs } from '@/shared/utils/helpers';
-import FormInput from './_component/FormInput/FormInput';
+import FormInput from '@/shared/components/form/FormInput';
 
 const formSchema = z.object({
   displayName: z
