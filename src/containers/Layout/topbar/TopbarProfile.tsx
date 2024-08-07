@@ -66,6 +66,12 @@ const TopbarProfile = () => {
             />
             <TopbarMenuDivider />
             <TopbarMenuLink
+              title="Account Management"
+              icon="users"
+              path="/account/management"
+              onClick={toggleCollapse}
+            />
+            <TopbarMenuLink
               title="Settings"
               icon="cog"
               path="/account/settings"

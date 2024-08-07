@@ -4,7 +4,7 @@ import { FormGroup, FormGroupField, FormGroupLabel } from '@/shared/components/f
 import Error from '@/shared/components/form/Error';
 import styled from 'styled-components';
 import { FieldErrors } from 'react-hook-form';
-import FormIcon from './_component/FormIcon';
+import FormIcon from './FormIcon';
 
 interface FormInputProps {
   placeholder: string;
