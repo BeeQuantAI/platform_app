@@ -1,15 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
-import { Alert } from 'react-bootstrap';
-import Link from 'next/link';
+import { USER_LOGIN } from '@/graphql/auth';
+import { useSearchParams } from '@/hooks/useSearchParams';
 import { AccountButton, LoginForm } from '@/shared/components/account/AccountElements';
 import { AUTH_TOKEN, EMAIL, STAY_SIGNED_IN } from '@/shared/constants/storage';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { useMutation } from '@apollo/client';
-import { USER_LOGIN } from '@/graphql/auth';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Alert } from 'react-bootstrap';
+import { FormProvider, useForm } from 'react-hook-form';
 import LoginFormGroup from './LoginFormGroup';
 
 type LoginData = { email: string; password: string; stay_signed_in: boolean };
