@@ -1,7 +1,7 @@
 import { gql } from './codegen/';
 export const USER_LOGIN = gql(`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation Login($email: String!, $password: String!, $stay_signed_in: Boolean!) {
+    login(email: $email, password: $password, stay_signed_in: $stay_signed_in) {
       code
       message
       data
@@ -16,5 +16,11 @@ export const USER_REGISTER = gql(`
       message
       data
     }
+  }
+`);
+
+export const LOGOUT = gql(`
+  mutation Logout {
+  logout
   }
 `);

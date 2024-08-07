@@ -22,7 +22,7 @@
     "predev": "yarn generate"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.6",
+    "@apollo/client": "^3.11.2",
     "@types/recharts": "^1.8.29",
     "@types/three": "^0.158.1",
     "add": "^2.0.6",

@@ -1,6 +1,6 @@
 'use client';
 
-import { ROUTE_KEY } from '@/routes/routeConfig';
+import { ROUTE_KEY, getPublicRouteByKey } from '@/routes/routeConfig';
 import { isAuthenticated } from '@/shared/utils/auth';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
@@ -8,6 +8,8 @@ import { paddingLeft } from '@/styles/directions';
 import { colorBackgroundBody } from '@/styles/palette';
 import { ReactNode, useEffect } from 'react';
 import Layout from '@/containers/Layout/Layout';
+import { usePathname } from 'next/navigation';
+import { IS_REFRESH_TOKEN_EXPIRED } from '@/shared/constants/storage';
 
 const ContainerWrap = styled.div`
   padding-top: 90px;
@@ -33,11 +35,13 @@ interface Props {
 
 export const WrappedRoutes: React.FC<Props> = ({ children }) => {
   const router = useRouter();
+  const pathname = usePathname();
   useEffect(() => {
     if (!isAuthenticated()) {
-      router.push(ROUTE_KEY.LOGIN);
+      localStorage.removeItem(IS_REFRESH_TOKEN_EXPIRED);
+      router.push(getPublicRouteByKey(ROUTE_KEY.LOGIN).path);
     }
-  }, [isAuthenticated(), router]);
+  }, [isAuthenticated(), pathname]);
   return (
     <div>
       <Layout />
