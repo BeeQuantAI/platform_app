@@ -7,6 +7,8 @@ import { useUserContext } from '@/hooks/userHooks';
 import { ROUTE_KEY, getPublicRouteByKey, getRouteByKey } from '@/routes/routeConfig';
 import SidebarCategory from './SidebarCategory';
 import SidebarLink, { SidebarLinkTitle, SidebarNavLink } from './SidebarLink';
+import { LOGOUT } from '@/graphql/auth';
+import { useMutation } from '@apollo/client';
 
 type SidebarContentProps = {
   onClick: () => void;
@@ -16,7 +18,9 @@ type SidebarContentProps = {
 
 const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
   const { store, setStore } = useUserContext();
-  const logout = () => {
+  const [logoutReq] = useMutation(LOGOUT);
+  const logout = async () => {
+    await logoutReq();
     sessionStorage.setItem(AUTH_TOKEN, '');
     localStorage.setItem(AUTH_TOKEN, '');
   };

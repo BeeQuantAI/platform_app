@@ -12,16 +12,20 @@ import { AUTH_TOKEN } from '@/shared/constants/storage';
 import Image from 'next/image';
 import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
 import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
+import { LOGOUT } from '@/graphql/auth';
+import { useMutation } from '@apollo/client';
 
 const TopbarProfile = () => {
   const { store } = useUserContext();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [logoutReq] = useMutation(LOGOUT);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await logoutReq();
     sessionStorage.setItem(AUTH_TOKEN, '');
     localStorage.setItem(AUTH_TOKEN, '');
   };

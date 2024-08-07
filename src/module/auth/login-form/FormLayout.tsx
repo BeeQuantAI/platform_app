@@ -5,39 +5,39 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { Alert } from 'react-bootstrap';
 import Link from 'next/link';
 import { AccountButton, LoginForm } from '@/shared/components/account/AccountElements';
-import { AUTH_TOKEN, EMAIL, REMEMBER_ME } from '@/shared/constants/storage';
+import { AUTH_TOKEN, EMAIL, STAY_SIGNED_IN } from '@/shared/constants/storage';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { useMutation } from '@apollo/client';
 import { USER_LOGIN } from '@/graphql/auth';
 import LoginFormGroup from './LoginFormGroup';
 
-type loginData = { email: string; password: string; remember_me: boolean };
+type LoginData = { email: string; password: string; stay_signed_in: boolean };
 
 const FormLayout = () => {
   const methods = useForm({
     defaultValues: {
       email: '',
       password: '',
-      remember_me: false,
+      stay_signed_in: false,
     },
   });
   const { handleSubmit, watch } = methods;
 
-  const rememberMe = watch('remember_me');
+  const staySignedIn = watch('stay_signed_in');
 
   useEffect(() => {
-    if (rememberMe !== undefined && typeof window !== 'undefined') {
-      localStorage.setItem(REMEMBER_ME, rememberMe.toString());
+    if (staySignedIn !== undefined && typeof window !== 'undefined') {
+      localStorage.setItem(STAY_SIGNED_IN, staySignedIn.toString());
     }
-  }, [rememberMe]);
+  }, [staySignedIn]);
 
   const router = useRouter();
   const [error, setError] = useState('');
   const originUrl = useSearchParams().get('orgUrl');
   const [login] = useMutation(USER_LOGIN);
 
-  const onSubmit = async (data: loginData) => {
+  const onSubmit = async (data: LoginData) => {
     const result = await login({
       variables: data,
     });
@@ -45,15 +45,12 @@ const FormLayout = () => {
       // refresh store after login success
       // store.refetchHandler();
       if (typeof window !== 'undefined') {
-        if (data.remember_me) {
-          sessionStorage.setItem(AUTH_TOKEN, '');
+        if (data.stay_signed_in) {
           localStorage.setItem(EMAIL, data.email);
-          localStorage.setItem(AUTH_TOKEN, result.data.login.data ?? '');
         } else {
           localStorage.setItem(EMAIL, '');
-          localStorage.setItem(AUTH_TOKEN, '');
-          sessionStorage.setItem(AUTH_TOKEN, result.data.login.data ?? '');
         }
+        localStorage.setItem(AUTH_TOKEN, result.data.login.data ?? '');
       }
       if (originUrl && originUrl !== '/') {
         // history.push(originUrl);
