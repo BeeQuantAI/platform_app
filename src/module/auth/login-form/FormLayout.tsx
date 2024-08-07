@@ -4,8 +4,6 @@ import { USER_LOGIN } from '@/graphql/auth';
 import { useSearchParams } from '@/hooks/useSearchParams';
 import { AccountButton, LoginForm } from '@/shared/components/account/AccountElements';
 import { AUTH_TOKEN, EMAIL, STAY_SIGNED_IN } from '@/shared/constants/storage';
-import { useRouter } from 'next/navigation';
-import { useSearchParams } from '@/hooks/useSearchParams';
 import { useMutation } from '@apollo/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
