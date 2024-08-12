@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { DisplayErrorMsgs, EmailErrorMsgs, PasswordErrorMsgs } from '@/shared/utils/helpers';
+import { DisplayErrorMsgs, EmailErrorMsgs } from '@/shared/utils/helpers';
 import SettingForm from './SettingForm';
 
 function renderSettingPage() {

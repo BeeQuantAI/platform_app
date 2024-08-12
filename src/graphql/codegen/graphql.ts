@@ -83,6 +83,8 @@ export type Mutation = {
   login: Result;
   /** User register */
   register: Result;
+  /** User logout */
+  revokeTokens: Scalars['Boolean']['output'];
   /** Update exchange key info */
   updateExchangeKey: Scalars['Boolean']['output'];
   /** Update user info */
@@ -107,6 +109,7 @@ export type MutationDeleteUserArgs = {
 
 export type MutationLoginArgs = {
   email: Scalars['String']['input'];
+  isStaySignedIn?: InputMaybe<Scalars['Boolean']['input']>;
   password: Scalars['String']['input'];
 };
 
@@ -210,6 +213,7 @@ export type UserType = {
 export type LoginMutationVariables = Exact<{
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
+  isStaySignedIn: Scalars['Boolean']['input'];
 }>;
 
 export type LoginMutation = {
@@ -225,6 +229,10 @@ export type RegisterMutation = {
   __typename?: 'Mutation';
   register: { __typename?: 'Result'; code: number; message?: string | null; data?: string | null };
 };
+
+export type RevokeTokensMutationVariables = Exact<{ [key: string]: never }>;
+
+export type RevokeTokensMutation = { __typename?: 'Mutation'; revokeTokens: boolean };
 
 export type GetUserInfoQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -280,6 +288,14 @@ export const LoginDocument = {
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
           },
         },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'isStaySignedIn' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Boolean' } },
+          },
+        },
       ],
       selectionSet: {
         kind: 'SelectionSet',
@@ -297,6 +313,11 @@ export const LoginDocument = {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'password' },
                 value: { kind: 'Variable', name: { kind: 'Name', value: 'password' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'isStaySignedIn' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'isStaySignedIn' } },
               },
             ],
             selectionSet: {
@@ -357,6 +378,20 @@ export const RegisterDocument = {
     },
   ],
 } as unknown as DocumentNode<RegisterMutation, RegisterMutationVariables>;
+export const RevokeTokensDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'RevokeTokens' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [{ kind: 'Field', name: { kind: 'Name', value: 'revokeTokens' } }],
+      },
+    },
+  ],
+} as unknown as DocumentNode<RevokeTokensMutation, RevokeTokensMutationVariables>;
 export const GetUserInfoDocument = {
   kind: 'Document',
   definitions: [

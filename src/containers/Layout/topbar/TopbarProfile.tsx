@@ -8,22 +8,27 @@ import styled from 'styled-components';
 import { marginLeft, right, left } from '@/styles/directions';
 import { colorBackground, colorHover, colorText, colorBorder } from '@/styles/palette';
 import { useUserContext } from '@/hooks/userHooks';
-import { AUTH_TOKEN } from '@/shared/constants/storage';
+import { AUTH_TOKEN, AUTH_STATUS } from '@/shared/constants/storage';
 import Image from 'next/image';
 import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
 import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
+import { REVOKETOKENS } from '@/graphql/auth';
+import { useMutation } from '@apollo/client';
 
 const TopbarProfile = () => {
   const { store } = useUserContext();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [revokeTokens] = useMutation(REVOKETOKENS);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await revokeTokens();
     sessionStorage.setItem(AUTH_TOKEN, '');
     localStorage.setItem(AUTH_TOKEN, '');
+    localStorage.removeItem(AUTH_STATUS);
   };
 
   return (

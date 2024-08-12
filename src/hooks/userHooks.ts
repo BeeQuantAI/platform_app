@@ -3,6 +3,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useAppContext, connectFactory } from '@/shared/utils/contextFactory';
 import { GET_USER } from '@/graphql/user';
 import { IUser } from '@/shared/utils/types';
+import { AUTH_STATUS } from '@/shared/constants/storage';
 
 // import { useLocation, useHistory } from 'react-router-dom';
 
@@ -21,8 +22,10 @@ export const useLoadUser = () => {
 
   const router = useRouter();
   const pathName = usePathname();
+  const isLoginPage = pathName === '/login';
 
   const { loading, refetch } = useQuery<{ getUserInfo: IUser }>(GET_USER, {
+    skip: isLoginPage,
     onCompleted: (data) => {
       if (data.getUserInfo) {
         const { id, displayName } = data.getUserInfo;
@@ -43,6 +46,7 @@ export const useLoadUser = () => {
       console.error('failed retrieving user info, backing to login');
       if (!pathName.match('/login') && typeof window !== 'undefined') {
         router.push(`/login?orgUrl=${pathName}`);
+        localStorage.removeItem(AUTH_STATUS);
       }
     },
   });

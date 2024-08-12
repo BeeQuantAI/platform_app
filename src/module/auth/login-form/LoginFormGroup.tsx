@@ -7,7 +7,7 @@ import {
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import FormField from '@/shared/components/form/FormHookField';
 import { emailPattern } from '@/shared/utils/helpers';
-import { EMAIL, REMEMBER_ME } from '@/shared/constants/storage';
+import { EMAIL, STAY_SIGNED_IN } from '@/shared/constants/storage';
 import { Controller, useFormContext } from 'react-hook-form';
 import PasswordField from '@/shared/components/form/Password';
 import { AccountForgotPassword } from '@/shared/components/account/AccountElements';
@@ -73,17 +73,19 @@ export default function LoginFormGroup() {
         </FormGroupField>
       </FormGroup>
       <FormGroup>
-        <FormGroupField>
+        <FormGroupField className="gap-4">
           <Controller
             control={control}
-            name="remember_me"
+            name="isStaySignedIn"
             defaultValue={
-              typeof window !== 'undefined' ? localStorage.getItem(REMEMBER_ME) === 'true' : false
+              typeof window !== 'undefined'
+                ? localStorage.getItem(STAY_SIGNED_IN) === 'true'
+                : false
             }
             render={({ field: { onChange, value } }) => (
               <CheckBoxField
-                name="remember_me"
-                label="Remember me"
+                name="isStaySignedIn"
+                label="Stay Signed in"
                 checked={value}
                 onChange={onChange}
               />
