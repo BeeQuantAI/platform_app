@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { FormProvider, useForm } from 'react-hook-form';
 import LoginFormGroup from './LoginFormGroup';
+import { useTranslations } from 'next-intl';
 
 type LoginData = { email: string; password: string; remember_me: boolean };
 
@@ -25,7 +26,7 @@ const FormLayout = () => {
   const { handleSubmit, watch } = methods;
 
   const rememberMe = watch('remember_me');
-
+  const t = useTranslations();
   useEffect(() => {
     if (rememberMe !== undefined && typeof window !== 'undefined') {
       localStorage.setItem(REMEMBER_ME, rememberMe.toString());
@@ -75,10 +76,10 @@ const FormLayout = () => {
         <LoginFormGroup />
         {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
         <AccountButton variant="primary" type="submit">
-          Sign In
+          {t('Shared.login')}
         </AccountButton>
         <Link href="/register" passHref className="w-100">
-          <AccountButton variant="outline-primary">Create Account</AccountButton>
+          <AccountButton variant="outline-primary">{t('LoginPage.create-account')}</AccountButton>
         </Link>
       </LoginForm>
     </FormProvider>

@@ -1,0 +1,117 @@
+{
+  "Shared": {
+    "welcome": "欢迎来到",
+    "logo": "BeeQuant",
+    "logo-accent": "AI",
+    "slogan": "使用BeeQuant AI智能交易",
+    "email": "邮箱",
+    "password": "密码",
+    "signIn": "注册",
+    "login": "登录",
+    "repeatPassword": "重复密码",
+    "ref": "推荐码",
+    "displayName": "用户名称{optional, select, true {(可选)} other {}}",
+    "logout": "登出",
+    "theme": "主题",
+    "lightTheme": "浅色",
+    "darkTheme": "暗色"
+  },
+
+  "LoginPage": {
+    "account-or": "或轻松使用",
+    "forget-password": "忘记密码?",
+    "remember-me": "记住密码",
+    "create-account": "创建帐户"
+  },
+
+  "RegisterPage": {
+    "account-have-account": "已有帐户？",
+    "account-or": "或轻松使用",
+    "haveAccount": "已经拥有账号?",
+    "signUp": "注册"
+  },
+
+  "Sidebar": {
+    "dashboard": "中控台",
+    "bots": {
+      "category-name": "交易助手",
+      "dashboard": "控制面板",
+      "management": "管理助手",
+      "create": "创建助手",
+      "details": "详细信息"
+    },
+    "cryptoEconomy": {
+      "category-name": "加密经济",
+      "prices": "价格",
+      "prices-details": "价格信息",
+      "exchange": "交易",
+      "exchange-details": "交易信息"
+    },
+    "account": {
+      "category-name": "帐户",
+      "profile": "个人资料",
+      "exchange-management": "交易管理",
+      "app-setting": "系统设置"
+    }
+  },
+
+  "Notifications": {
+    "email": {
+      "required": "请填写邮箱",
+      "invalid": "邮箱格式不正确"
+    },
+    "displayName": {
+      "description": "用户名称长度在4到15个字符之间，只允许使用字母、数字、连字符和下划线",
+      "required": "请输入用户名称",
+      "invalid": "用户名称只能包含字母、数字、连字符和下划线",
+      "minLength": "用户名称长度至少为4个字符",
+      "maxLength": "用户名称长度最多为32个字符"
+    },
+    "password": {
+      "description": "密码长度在8到32个字符，必须包含至少一个字母、数字或特殊字符",
+      "required": "请输入密码",
+      "invalid": "密码必须包含至少一个字母、一个数字和一个特殊字符",
+      "minLength": "密码长度至少为8个字符",
+      "maxLength": "密码长度最多为32个字符",
+      "notMatch": "两次输入的密码不匹配"
+    },
+    "ref": {
+      "required": "请输入推荐码"
+    }
+  },
+
+  "SettingPage": {
+    "title": "账户设置",
+    "subtitle": "更新您的账户信息",
+    "realName": "真实姓名",
+    "mobile": "手机号码",
+    "submit": "提交",
+    "cancel": "取消"
+  },
+
+  "AppSettingPage": {
+    "title": "系统设置",
+    "subtitle": "更新您的系统设置",
+    "language": "语言"
+  },
+
+  "CryptoSettingPage": {
+    "title": "加密货币交易所管理"
+  },
+
+  "Dashboard": {
+    "header": "BeeQuant中控台",
+    "total-profit-earned": "总收益",
+    "total-asset": "总资产",
+    "pending-orders": "待处理订单",
+    "recent-transaction": "最近交易"
+  },
+
+  "Profile": {
+    "profile": "账户信息",
+    "wallet": "钱包",
+    "settings": "账户设置"
+  },
+  "exchange": {},
+  "bot": {}
+}

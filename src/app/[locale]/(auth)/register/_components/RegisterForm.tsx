@@ -1,3 +1,4 @@
+'client';
 import { useState } from 'react';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import { Alert } from 'react-bootstrap';
@@ -20,6 +21,7 @@ import {
 import { Controller, useForm } from 'react-hook-form';
 import FormField from '@/shared/components/form/FormHookField';
 import { config } from '@/config/config';
+import { useTranslations } from 'next-intl';
 
 const { referenceName } = config;
 
@@ -38,18 +40,6 @@ type IsFocused = {
   ref: boolean;
 };
 
-// region STYLES
-const RegisterButtons = styled(AccountButtons)`
-  ${marginLeft}: 0!important;
-  margin-bottom: 20px;
-
-  button {
-    margin-bottom: 0;
-  }
-`;
-
-// endregion
-
 const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
   const {
     handleSubmit,
@@ -59,6 +49,7 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
   } = useForm();
 
   const pwd = watch('password');
+  const t = useTranslations();
 
   const prepareFormData = (data: any) => {
     const { repeatPassword, ...formData } = data;
@@ -94,11 +85,8 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
       </Alert>
       <FormGroup>
         <FormGroupLabel>
-          Display Name (optional)
-          <span>
-            {isFocused.displayName &&
-              ': between 4 to 15 characters, only letters, numbers, dashes and underscore are allowed'}
-          </span>
+          {t('Shared.displayName', { optional: 'true' })}
+          <span>{isFocused.displayName && t('Notifications.displayName.description')}</span>
         </FormGroupLabel>
         <FormGroupField>
           <FormGroupIcon>
@@ -112,12 +100,11 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
             rules={{
               pattern: {
                 value: displayNamePatten,
-                message:
-                  'Display Name must contain 4 to 15 characters, only letters, numbers, dashes and underscore are allowed',
+                message: t('Notifications.displayName.invalid'),
               },
             }}
             defaultValue=""
-            placeholder="Display Name"
+            placeholder={t('Shared.displayName', { optional: 'false' })}
             isAboveError
             onFocus={() => handleFocus('displayName')}
             onBlur={() => handleBlur('displayName')}
@@ -126,7 +113,7 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
       </FormGroup>
       <FormGroup>
         <FormGroupLabel>
-          Email
+          {t('Shared.email')}
           <span>{isFocused.email && ''}</span>
         </FormGroupLabel>
         <FormGroupField>
@@ -139,14 +126,14 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
             component="input"
             errors={errors}
             rules={{
-              required: 'This is a required field',
+              required: t('Notifications.email.required'),
               pattern: {
                 value: emailPattern,
-                message: 'Entered value does not match email format',
+                message: t('Notifications.email.invalid'),
               },
             }}
             defaultValue=""
-            placeholder="Email"
+            placeholder={t('Shared.email')}
             isAboveError
             onFocus={() => handleFocus('email')}
             onBlur={() => handleBlur('email')}
@@ -155,11 +142,8 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
       </FormGroup>
       <FormGroup>
         <FormGroupLabel>
-          Password
-          <span>
-            {isFocused.password &&
-              ': 8 to 32 characters, including letter, number and special character'}
-          </span>
+          {t('Shared.password')}
+          <span>{isFocused.password && t('Notifications.password.description')}</span>
         </FormGroupLabel>
         <FormGroupField>
           <Controller
@@ -172,18 +156,17 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
                   touched: !!fieldState.error,
                   error: fieldState.error?.message,
                 }}
-                placeholder="Password"
+                placeholder={t('Shared.password')}
                 keyIcon
                 isAboveError
                 onFocus={() => handleFocus(field.name)}
               />
             )}
             rules={{
-              required: 'This is a required field',
+              required: t('Notifications.password.required'),
               pattern: {
                 value: passwordPatten,
-                message:
-                  'must contain 8 to 32 characters, including letter, number and special character',
+                message: t('Notifications.password.invalid'),
               },
             }}
             defaultValue=""
@@ -192,7 +175,7 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
       </FormGroup>
       <FormGroup>
         <FormGroupLabel>
-          Repeat Password
+          {t('Shared.repeatPassword')}
           <span>{isFocused.repeatPassword && ''}</span>
         </FormGroupLabel>
         <FormGroupField>
@@ -206,21 +189,21 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
                   touched: !!fieldState.error,
                   error: fieldState.error?.message,
                 }}
-                placeholder="Repeat Password"
+                placeholder={t('Shared.repeatPassword')}
                 keyIcon
                 isAboveError
               />
             )}
             rules={{
-              required: 'This is a required field',
-              validate: (value) => value === pwd || 'The passwords do not match',
+              required: t('Notifications.password.required'),
+              validate: (value) => value === pwd || t('Notifications.password.notMatch'),
             }}
             defaultValue=""
           />
         </FormGroupField>
       </FormGroup>
       <LastFormGroup>
-        <FormGroupLabel>Reference</FormGroupLabel>
+        <FormGroupLabel>{t('Shared.ref')}</FormGroupLabel>
         <FormGroupField>
           <FormGroupIcon>
             <AccountOutlineIcon />
@@ -231,10 +214,10 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
             component="input"
             errors={errors}
             rules={{
-              required: 'This is a required field',
+              required: t('Notifications.ref.required'),
             }}
             defaultValue={defaultReferenceName}
-            placeholder="Reference"
+            placeholder={t('Shared.ref')}
             isAboveError
             disabled
           />
@@ -243,7 +226,7 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
       <RegisterButtons>
         {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
         <AccountButton type="submit" variant="primary">
-          Sign Up
+          {t('RegisterPage.signUp')}
         </AccountButton>
       </RegisterButtons>
     </FormContainer>
@@ -251,3 +234,15 @@ const RegisterForm = ({ onSubmit, error = '' }: RegisterFormProps) => {
 };
 
 export default RegisterForm;
+
+// region STYLES
+const RegisterButtons = styled(AccountButtons)`
+  ${marginLeft}: 0!important;
+  margin-bottom: 20px;
+
+  button {
+    margin-bottom: 0;
+  }
+`;
+
+// endregion

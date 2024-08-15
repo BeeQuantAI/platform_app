@@ -7,6 +7,7 @@ import {
 } from '@/shared/components/account/AccountElements';
 import FacebookIcon from 'mdi-react/FacebookIcon';
 import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 interface AccountFooterProps {
@@ -14,11 +15,12 @@ interface AccountFooterProps {
 }
 
 const AccountFooter = ({ isLogin }: AccountFooterProps) => {
+  const t = useTranslations();
   if (isLogin) {
     return (
       <>
         <AccountOr>
-          <p>Or Easily Using</p>
+          <p>{t('LoginPage.account-or')}</p>
         </AccountOr>
         <AccountSocial>
           {/* @ts-ignore - Ignoring because of complex union types incorrectly inferred */}
@@ -38,8 +40,8 @@ const AccountFooter = ({ isLogin }: AccountFooterProps) => {
   return (
     <AccountHaveAccount>
       <p>
-        Already have an account?
-        <Link href="/login">Login</Link>
+        {t('RegisterPage.haveAccount')}
+        <Link href="/login">{t('Shared.login')}</Link>
       </p>
     </AccountHaveAccount>
   );

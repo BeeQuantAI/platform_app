@@ -15,25 +15,27 @@ import {
 import FacebookIcon from 'mdi-react/FacebookIcon';
 import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
 import FormLayout from './FormLayout';
+import { useTranslations } from 'next-intl';
 export default function LoginForm() {
+  const t = useTranslations('');
   return (
     <AccountWrap>
       <AccountContent>
         <AccountCard>
           <AccountHead>
             <AccountTitle>
-              Welcome to
+              {t('Shared.welcome')}
               <br />
               <AccountLogo>
-                BeeQuant
-                <AccountLogoAccent> AI</AccountLogoAccent>
+                {t('Shared.logo')}
+                <AccountLogoAccent> {t('Shared.logo-accent')}</AccountLogoAccent>
               </AccountLogo>
             </AccountTitle>
-            <h4 className="subhead">Trading smart, trading with BeeQuant AI</h4>
+            <h4 className="subhead">{t('Shared.slogan')}</h4>
           </AccountHead>
           <FormLayout />
           <AccountOr>
-            <p>Or Easily Using</p>
+            <p>{t('LoginPage.account-or')}</p>
           </AccountOr>
           <AccountSocial>
             {/* @ts-ignore - Ignoring because of complex union types incorrectly inferred */}

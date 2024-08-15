@@ -1,17 +1,20 @@
 'use client';
 
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useTitle } from '@/hooks/useTitle';
 import ContentCard from './_components/ContentCard';
+import { useTitle } from '@/hooks/useTitle';
+import { useTranslations } from 'next-intl';
 
-const ExchangeManagement = () => {
+function ExchangePage() {
   useTitle('Exchange Management - BeeQuant');
+  const t = useTranslations('CryptoSettingPage');
 
   return (
     <Container>
       <Row>
         <Col md={12}>
-          <h3 className="page-title">Crypto Exchange Management</h3>
+          <h3 className="page-title">{t('title')}</h3>
         </Col>
       </Row>
       <Row>
@@ -19,6 +22,6 @@ const ExchangeManagement = () => {
       </Row>
     </Container>
   );
-};
+}
 
-export default ExchangeManagement;
+export default ExchangePage;

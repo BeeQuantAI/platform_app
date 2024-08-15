@@ -13,8 +13,10 @@ import PasswordField from '@/shared/components/form/Password';
 import { AccountForgotPassword } from '@/shared/components/account/AccountElements';
 import Link from 'next/link';
 import { CheckBoxField } from '@/shared/components/form/FormCheckBox';
+import { useTranslations } from 'next-intl';
 
 export default function LoginFormGroup() {
+  const t = useTranslations();
   const {
     control,
     formState: { errors },
@@ -23,7 +25,7 @@ export default function LoginFormGroup() {
   return (
     <>
       <FormGroup>
-        <FormGroupLabel>Email</FormGroupLabel>
+        <FormGroupLabel>{t('Shared.email')}</FormGroupLabel>
         <FormGroupField>
           <FormGroupIcon>
             <AccountOutlineIcon />
@@ -34,20 +36,20 @@ export default function LoginFormGroup() {
             component="input"
             errors={errors}
             rules={{
-              required: 'This is required field',
+              required: t('Notifications.email.required'),
               pattern: {
                 value: emailPattern,
-                message: 'Entered value does not match email format',
+                message: t('Notifications.email.invalid'),
               },
             }}
             defaultValue={typeof window !== 'undefined' ? localEmail : ''}
-            placeholder="Email"
+            placeholder={t('Shared.email')}
             isAboveError
           />
         </FormGroupField>
       </FormGroup>
       <FormGroup>
-        <FormGroupLabel>Password</FormGroupLabel>
+        <FormGroupLabel>{t('Shared.password')}</FormGroupLabel>
         <FormGroupField>
           <Controller
             name="password"
@@ -59,16 +61,16 @@ export default function LoginFormGroup() {
                   touched: !!fieldState.error,
                   error: fieldState.error?.message,
                 }}
-                placeholder="Password"
+                placeholder={t('Shared.password')}
                 keyIcon
                 isAboveError
               />
             )}
-            rules={{ required: 'This is required field' }}
+            rules={{ required: t('Notifications.password.required') }}
             defaultValue=""
           />
           <AccountForgotPassword>
-            <Link href="login">Forgot a password?</Link>
+            <Link href="login">{t('LoginPage.forget-password')}</Link>
           </AccountForgotPassword>
         </FormGroupField>
       </FormGroup>
@@ -83,7 +85,7 @@ export default function LoginFormGroup() {
             render={({ field: { onChange, value } }) => (
               <CheckBoxField
                 name="remember_me"
-                label="Remember me"
+                label={t('LoginPage.remember-me')}
                 checked={value}
                 onChange={onChange}
               />
