@@ -8,6 +8,7 @@ import {
   WidgetCardTotalLarge,
   WidgetCardWrap,
 } from './DashboardCardElements';
+import { useTranslations } from 'next-intl';
 
 const data = [
   { id: 0, name: 'Page A', pv: 255 },
@@ -28,12 +29,13 @@ const RecentTransactions = () => {
     setActiveIndex(index);
   };
 
+  const t = useTranslations('Dashboard');
   return (
     <Col md={12} xl={3} lg={6} xs={12}>
       <Card>
         <DashboardWidgetCard>
           <CardTitleWrap>
-            <WidgetCardTitle>Recent transactions</WidgetCardTitle>
+            <WidgetCardTitle>{t('recent-transaction')}</WidgetCardTitle>
           </CardTitleWrap>
           <WidgetCardWrap>
             <WidgetCardTotalLarge>{activeItem.pv}</WidgetCardTotalLarge>

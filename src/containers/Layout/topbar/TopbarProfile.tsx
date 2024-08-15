@@ -12,11 +12,12 @@ import { AUTH_TOKEN } from '@/shared/constants/storage';
 import Image from 'next/image';
 import { TopbarBack, TopbarDownIcon } from './BasicTopbarComponents';
 import TopbarMenuLink, { TopbarLink } from './TopbarMenuLink';
+import { useTranslations } from 'next-intl';
 
 const TopbarProfile = () => {
   const { store } = useUserContext();
   const [isCollapsed, setIsCollapsed] = useState(false);
-
+  const t = useTranslations();
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -53,25 +54,25 @@ const TopbarProfile = () => {
         <TopbarMenuWrap id="collapse-menu">
           <TopbarMenu>
             <TopbarMenuLink
-              title="Profile"
+              title={t('Profile.profile')}
               icon="user"
               path="/account/profile"
               onClick={toggleCollapse}
             />
             <TopbarMenuLink
-              title="Wallet"
+              title={t('Profile.wallet')}
               icon="briefcase"
               path="/dashboard"
               onClick={toggleCollapse}
             />
             <TopbarMenuDivider />
             <TopbarMenuLink
-              title="Settings"
+              title={t('Profile.settings')}
               icon="cog"
               path="/account/settings"
               onClick={toggleCollapse}
             />
-            <TopbarMenuLink title="Log Out" icon="exit" path="/login" onClick={logout} />
+            <TopbarMenuLink title={t('Shared.logout')} icon="exit" path="/login" onClick={logout} />
           </TopbarMenu>
         </TopbarMenuWrap>
       </Collapse>

@@ -1,18 +1,19 @@
-import Page404 from 'app/not-found';
-import Dashboard from 'app/(protected)/dashboard/page';
-import ExchangeManagement from 'app/(protected)/exchange/page';
-import Profile from 'app/(protected)/account/profile/page';
-import Login from 'app/(auth)/login/page';
-import Register from 'app/(auth)/register/page';
-import Settings from 'app/(protected)/account/settings/page';
-import BotDashboard from 'app/(protected)/bot/dashboard/page';
-import BotManagement from 'app/(protected)/bot/management/page';
-import CryptoExchanges from 'app/(protected)/crypto/exchange/page';
-import CryptoPrices from 'app/(protected)/crypto/price/page';
-import ExchangeDetails from 'app/(protected)/crypto/exchange/details/page';
-import PriceDetails from 'app/(protected)/crypto/price/details/page';
-import BotDetail from 'app/(protected)/bot/details/page';
-import BotCreate from 'app/(protected)/bot/create/page';
+import Page404 from 'app/[locale]/not-found';
+import Dashboard from 'app/[locale]/(protected)/dashboard/page';
+import ExchangeManagement from 'app/[locale]/(protected)/exchange/page';
+import Profile from 'app/[locale]/(protected)/account/profile/page';
+import Login from 'app/[locale]/(auth)/login/page';
+import Register from 'app/[locale]/(auth)/register/page';
+import Settings from 'app/[locale]/(protected)/account/settings/page';
+import BotDashboard from 'app/[locale]/(protected)/bot/dashboard/page';
+import BotManagement from 'app/[locale]/(protected)/bot/management/page';
+import CryptoExchanges from 'app/[locale]/(protected)/crypto/exchange/page';
+import CryptoPrices from 'app/[locale]/(protected)/crypto/price/page';
+import ExchangeDetails from 'app/[locale]/(protected)/crypto/exchange/details/page';
+import PriceDetails from 'app/[locale]/(protected)/crypto/price/details/page';
+import BotDetail from 'app/[locale]/(protected)/bot/details/page';
+import BotCreate from 'app/[locale]/(protected)/bot/create/page';
+import AppSetting from 'app/[locale]/(protected)/appsetting/page';
 
 interface IRoute {
   path: string;
@@ -38,6 +39,7 @@ export const ROUTE_KEY = {
   CRYPTO_PRICES: 'crypto_prices',
   CRYPTO_EXCHANGE_DETAILS: 'crypto_exchange_detail',
   CRYPTO_PRICE_DETAILS: 'crypto_price_detail',
+  APP_SETTING: 'app_setting',
 };
 
 export const PUBLIC_ROUTE_CONFIG: Record<string, IRoute> = {
@@ -139,6 +141,12 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     name: 'Settings',
     title: 'Settings - BeeQuant',
     component: Settings,
+  },
+  [ROUTE_KEY.APP_SETTING]: {
+    path: '/appsetting',
+    name: 'App Setting',
+    title: 'AppSetting - BeeQuant',
+    component: AppSetting,
   },
 };
 

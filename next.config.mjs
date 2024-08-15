@@ -1,9 +1,13 @@
+import createNextIntPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntPlugin();
+
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
   /* config options here */
-  output: 'export',
+  output: 'standalone',
   distDir: './dist',
   compiler: {
     styledComponents: true,
@@ -13,4 +17,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

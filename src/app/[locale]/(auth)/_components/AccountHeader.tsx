@@ -4,19 +4,21 @@ import {
   AccountLogoAccent,
   AccountTitle,
 } from '@/shared/components/account/AccountElements';
+import { useTranslations } from 'next-intl';
 
 const AccountHeader = () => {
+  const t = useTranslations('Shared');
   return (
     <AccountHead>
       <AccountTitle>
-        Welcome to
+        {t('welcome')}
         <br />
         <AccountLogo>
-          BeeQuant
-          <AccountLogoAccent> AI</AccountLogoAccent>
+          {t('logo')}
+          <AccountLogoAccent> {t('logo-accent')}</AccountLogoAccent>
         </AccountLogo>
       </AccountTitle>
-      <h4 className="subhead">Trading smart, trading with BeeQuant AI</h4>
+      <h4 className="subhead">{t('slogan')}</h4>
     </AccountHead>
   );
 };

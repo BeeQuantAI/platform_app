@@ -1,25 +1,23 @@
 'use client';
 
-import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Card, CardBody, CardTitleWrap, CardTitle, CardSubhead } from '@/shared/components/Card';
-import SettingFormLayout from './SettingFormLayout';
+import { AppSettingFormLayout } from './AppSettingFormLayout';
 import { useTranslations } from 'next-intl';
 
-const SettingForm = () => {
-  const t = useTranslations('SettingPage');
-
+const AppSettingPage = () => {
+  const t = useTranslations('AppSettingPage');
   return (
     <Container>
       <Row>
         <Col md={12} lg={12}>
           <Card>
-            <CardBody>
+            <CardBody data-testid="card-body">
               <CardTitleWrap>
                 <CardTitle>{t('title')}</CardTitle>
                 <CardSubhead>{t('subtitle')}</CardSubhead>
               </CardTitleWrap>
-              <SettingFormLayout />
+              <AppSettingFormLayout />
             </CardBody>
           </Card>
         </Col>
@@ -28,4 +26,4 @@ const SettingForm = () => {
   );
 };
 
-export default SettingForm;
+export default AppSettingPage;

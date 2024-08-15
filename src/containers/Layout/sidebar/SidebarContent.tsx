@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { AUTH_TOKEN, THEME } from '@/shared/constants/storage';
 import { useUserContext } from '@/hooks/userHooks';
 import { ROUTE_KEY, getPublicRouteByKey, getRouteByKey } from '@/routes/routeConfig';
+import { useTranslations } from 'next-intl';
 import SidebarCategory from './SidebarCategory';
 import SidebarLink, { SidebarLinkTitle, SidebarNavLink } from './SidebarLink';
 
@@ -16,6 +17,7 @@ type SidebarContentProps = {
 
 const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
   const { store, setStore } = useUserContext();
+  const t = useTranslations();
   const logout = () => {
     sessionStorage.setItem(AUTH_TOKEN, '');
     localStorage.setItem(AUTH_TOKEN, '');
@@ -28,92 +30,108 @@ const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
     });
     localStorage.setItem(THEME, color);
   };
-
   return (
     <SidebarContentWrap $collapse={$collapse}>
       <SidebarBlock $collapse={$collapse}>
         <SidebarLink
-          title={getRouteByKey(ROUTE_KEY.DASHBOARD).name}
+          title={t('Sidebar.dashboard')}
           icon="home"
           route={getRouteByKey(ROUTE_KEY.DASHBOARD).path}
           onClick={onClick}
         />
       </SidebarBlock>
       <SidebarBlock $collapse={$collapse}>
-        <SidebarCategory title="Bots" icon="chart-bars" $collapse={$collapse}>
+        <SidebarCategory
+          title={t('Sidebar.bots.category-name')}
+          icon="chart-bars"
+          $collapse={$collapse}
+        >
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.BOT_DASHBOARD).name}
+            title={t('Sidebar.bots.dashboard')}
             route={getRouteByKey(ROUTE_KEY.BOT_DASHBOARD).path}
             onClick={() => {}}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.BOT_MANAGEMENT).name}
+            title={t('Sidebar.bots.management')}
             route={getRouteByKey(ROUTE_KEY.BOT_MANAGEMENT).path}
             onClick={() => {}}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.BOT_CREATE).name}
+            title={t('Sidebar.bots.create')}
             route={getRouteByKey(ROUTE_KEY.BOT_CREATE).path}
             onClick={() => {}}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.BOT_DETAILS).name}
+            title={t('Sidebar.bots.details')}
             route={getRouteByKey(ROUTE_KEY.BOT_DETAILS).path}
             onClick={() => {}}
           />
         </SidebarCategory>
-        <SidebarCategory title="Cryptoeconomy" icon="earth" $collapse={$collapse}>
+        <SidebarCategory
+          title={t('Sidebar.cryptoEconomy.category-name')}
+          icon="earth"
+          $collapse={$collapse}
+        >
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.CRYPTO_PRICES).name}
+            title={t('Sidebar.cryptoEconomy.prices')}
             route={getRouteByKey(ROUTE_KEY.CRYPTO_PRICES).path}
             onClick={() => {}}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.CRYPTO_PRICE_DETAILS).name}
+            title={t('Sidebar.cryptoEconomy.prices-details')}
             route={getRouteByKey(ROUTE_KEY.CRYPTO_PRICE_DETAILS).path}
             onClick={() => {}}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.CRYPTO_EXCHANGES).name}
+            title={t('Sidebar.cryptoEconomy.exchange')}
             route={getRouteByKey(ROUTE_KEY.CRYPTO_EXCHANGES).path}
             onClick={() => {}}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.CRYPTO_EXCHANGE_DETAILS).name}
+            title={t('Sidebar.cryptoEconomy.exchange-details')}
             route={getRouteByKey(ROUTE_KEY.CRYPTO_EXCHANGE_DETAILS).path}
             onClick={() => {}}
           />
         </SidebarCategory>
       </SidebarBlock>
       <SidebarBlock $collapse={$collapse}>
-        <SidebarCategory title="Theme" icon="diamond" $collapse={$collapse}>
+        <SidebarCategory title={t('Shared.theme')} icon="diamond" $collapse={$collapse}>
           {/* eslint-disable-next-line max-len */}
           {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
           <SidebarNavLink as="button" type="button" onClick={() => changeTheme('light')}>
-            <SidebarLinkTitle>Light Theme</SidebarLinkTitle>
+            <SidebarLinkTitle>{t('Shared.lightTheme')}</SidebarLinkTitle>
           </SidebarNavLink>
           {/* eslint-disable-next-line max-len */}
           {/* @ts-ignore - Ignoring because of complex union types that are not correctly inferred */}
           <SidebarNavLink as="button" type="button" onClick={() => changeTheme('dark')}>
-            <SidebarLinkTitle>Dark Theme</SidebarLinkTitle>
+            <SidebarLinkTitle>{t('Shared.darkTheme')}</SidebarLinkTitle>
           </SidebarNavLink>
         </SidebarCategory>
-        <SidebarCategory title="Account" icon="user" $collapse={$collapse}>
+        <SidebarCategory
+          title={t('Sidebar.account.category-name')}
+          icon="user"
+          $collapse={$collapse}
+        >
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.ACCOUNT_PROFILE).name}
+            title={t('Sidebar.account.profile')}
             route={getRouteByKey(ROUTE_KEY.ACCOUNT_PROFILE).path}
             onClick={onClick}
           />
           <SidebarLink
-            title={getRouteByKey(ROUTE_KEY.EXCHANGE_MANAGEMENT).name}
+            title={t('Sidebar.account.exchange-management')}
             route={getRouteByKey(ROUTE_KEY.EXCHANGE_MANAGEMENT).path}
+            onClick={onClick}
+          />
+          <SidebarLink
+            title={t('Sidebar.account.app-setting')}
+            route={getRouteByKey(ROUTE_KEY.APP_SETTING).path}
             onClick={onClick}
           />
         </SidebarCategory>
       </SidebarBlock>
       <SidebarBlock $collapse={$collapse}>
         <SidebarLink
-          title="Log Out"
+          title={t('Shared.logout')}
           icon="exit"
           route={getPublicRouteByKey(ROUTE_KEY.LOGIN).path}
           onClick={logout}

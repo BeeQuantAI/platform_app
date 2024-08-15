@@ -1,0 +1,119 @@
+{
+  "Shared": {
+    "welcome": "Welcome to",
+    "logo": "BeeQuant",
+    "logo-accent": "AI",
+    "slogan": "Trading smart, trading with BeeQuant AI",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "login": "Login",
+    "repeatPassword": "Repeat Password",
+    "ref": "Reference",
+    "displayName": "Display Name{optional, select, true {(optional)} other {}}",
+    "logout": "Logout",
+    "theme": "Theme",
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme"
+  },
+
+  "LoginPage": {
+    "account-or": "Or Easily Using",
+    "forget-password": "Forgot a password?",
+    "remember-me": "Remember Me",
+    "create-account": "Create Account"
+  },
+
+  "RegisterPage": {
+    "account-have-account": "Already have an account?",
+    "signUp": "Sign Up",
+    "haveAccount": "Already have an account?"
+  },
+
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "bots": {
+      "category-name": "Bots",
+      "dashboard": "Bots Dashboard",
+      "management": "Bots Management",
+      "create": "Bot Create",
+      "details": "Bot Details"
+    },
+    "cryptoEconomy": {
+      "category-name": "Cryptoeconomy",
+      "prices": "Prices",
+      "prices-details": "Price Details",
+      "exchange": "Exchanges",
+      "exchange-details": "Exchange Details"
+    },
+    "theme": {},
+    "account": {
+      "category-name": "Account",
+      "profile": "Profile",
+      "exchange-management": "Exchange Management",
+      "app-setting": "App Setting"
+    },
+    "log-out": "Log Out"
+  },
+
+  "Notifications": {
+    "email": {
+      "required": "Email is required",
+      "invalid": "Invalid email address"
+    },
+    "displayName": {
+      "description": "between 4 to 15 characters, only letters, numbers, dashes and underscore are allowed",
+      "required": "Display Name is required",
+      "invalid": "Display name must contain only letters, numbers, hyphens and underscores",
+      "minLength": "Display name must be at least 4 characters",
+      "maxLength": "Display name must be at most 15 characters"
+    },
+    "password": {
+      "description": "8 to 32 characters, including letter, number and special character",
+      "required": "Password is required",
+      "invalid": "Password must contain at least one letter, one number and one special character",
+      "minLength": "Password must be at least 8 characters",
+      "maxLength": "Password must be at most 32 characters",
+      "notMatch": "Password does not match"
+    },
+    "ref": {
+      "required": "Referral code is required"
+    }
+  },
+
+  "SettingPage": {
+    "title": "Settings",
+    "subtitle": "Update your profile",
+    "realName": "Real Name",
+    "mobile": "Mobile",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+
+  "AppSettingPage": {
+    "title": "App Settings",
+    "subtitle": "Change your app settings",
+    "language": "Language"
+  },
+
+  "CryptoSettingPage": {
+    "title": "Crypto Exchange Management"
+  },
+
+  "Dashboard": {
+    "header": "BeeQuant Dashboard",
+    "total-profit-earned": "Total Profit Earned",
+    "total-asset": "Total Asset",
+    "pending-orders": "Pending Orders",
+    "recent-transaction": "Recent Transaction"
+  },
+
+  "Profile": {
+    "profile": "Profile",
+    "wallet": "Wallet",
+    "settings": "Settings"
+  },
+
+  "exchange": {},
+  "bot": {}
+}

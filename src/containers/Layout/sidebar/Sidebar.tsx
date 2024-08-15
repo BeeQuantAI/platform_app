@@ -76,7 +76,7 @@ const SidebarWrap = styled.div<{ $show?: boolean; $collapse?: boolean; topNaviga
   padding-top: 0;
   z-index: 101;
   display: none;
-  
+
   ${(props) =>
     props.$show &&
     `
@@ -107,10 +107,10 @@ const SidebarWrap = styled.div<{ $show?: boolean; $collapse?: boolean; topNaviga
         ${marginRight(props)}: 188px;
       }
     }
-  `};
+  `}
+  }
 
   @media screen and (min-width: 1300px) {
-
     ${(props) =>
       props.topNavigation &&
       `
