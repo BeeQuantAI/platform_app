@@ -13,7 +13,7 @@ type FormFieldProps = {
 
 const FormField: React.FC<FormFieldProps> = ({
   input = null,
-  meta: { touched = false, error = '' },
+  meta: { touched = false, error = '' } = {},
   component: Component = 'input',
   isAboveError = false,
   wrapperClassName = '',

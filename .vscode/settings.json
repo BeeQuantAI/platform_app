@@ -2,5 +2,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": ["endregion", "linebreak", "Topbar"]
+  "cSpell.words": ["endregion", "linebreak", "Topbar", "vanta"]
 }
