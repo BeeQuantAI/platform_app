@@ -2,11 +2,13 @@
 import { colorBorder, colorBackground, colorHover } from '@/styles/palette';
 import { left } from '@/styles/directions';
 import styled from 'styled-components';
-import { AUTH_TOKEN, THEME } from '@/shared/constants/storage';
+import { AUTH_TOKEN, THEME, AUTH_STATUS } from '@/shared/constants/storage';
 import { useUserContext } from '@/hooks/userHooks';
 import { ROUTE_KEY, getPublicRouteByKey, getRouteByKey } from '@/routes/routeConfig';
 import SidebarCategory from './SidebarCategory';
 import SidebarLink, { SidebarLinkTitle, SidebarNavLink } from './SidebarLink';
+import { REVOKETOKENS } from '@/graphql/auth';
+import { useMutation } from '@apollo/client';
 
 type SidebarContentProps = {
   onClick: () => void;
@@ -16,9 +18,12 @@ type SidebarContentProps = {
 
 const SidebarContent = ({ onClick, $collapse }: SidebarContentProps) => {
   const { store, setStore } = useUserContext();
-  const logout = () => {
+  const [revokeTokens] = useMutation(REVOKETOKENS);
+  const logout = async () => {
+    await revokeTokens();
     sessionStorage.setItem(AUTH_TOKEN, '');
     localStorage.setItem(AUTH_TOKEN, '');
+    localStorage.removeItem(AUTH_STATUS);
   };
 
   const changeTheme = (color: string) => {

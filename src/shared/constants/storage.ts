@@ -1,5 +1,6 @@
 export const AUTH_TOKEN = 'auth_token';
-export const REMEMBER_ME = 'remember_me';
 export const SIDEBAR_COLLAPSED = 'sidebar_collapsed';
 export const EMAIL = 'email';
 export const THEME = 'theme';
+export const STAY_SIGNED_IN = 'stay_signed_in';
+export const AUTH_STATUS = 'auth_status';
