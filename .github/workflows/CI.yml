@@ -4,30 +4,40 @@ on:
   pull_request:
     branches:
       - 'dev'
+
 jobs:
   test:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_DEV_SERVER_URL: ${{ secrets.NEXT_PUBLIC_DEV_SERVER_URL }}
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: setup node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.10'
-      - name: get node version
-        id: node
-        run: |
-          echo ":set-output name=node_version::$(node -v)"
-      - name: cache node_modules
+
+      - name: Disable Next.js telemetry
+        run: npx next telemetry disable
+
+      - name: Cache node_modules and .next/cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.node_version }}
-      - name: install dependencies
-        run: yarn
-      - name: run tests
+          path: |
+            node_modules
+            .next/cache
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('next.config.mjs') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
         run: yarn test
-      - name: build code
+
+      - name: Build code
         run: yarn build
