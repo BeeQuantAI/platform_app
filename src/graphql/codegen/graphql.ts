@@ -230,7 +230,13 @@ export type GetUserInfoQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUserInfoQuery = {
   __typename?: 'Query';
-  getUserInfo: { __typename?: 'UserType'; id: string; displayName: string };
+  getUserInfo: {
+    __typename?: 'UserType';
+    id: string;
+    displayName: string;
+    email: string;
+    ref: string;
+  };
 };
 
 export type GetUserByIdQueryVariables = Exact<{
@@ -375,6 +381,8 @@ export const GetUserInfoDocument = {
               selections: [
                 { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'displayName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'ref' } },
               ],
             },
           },

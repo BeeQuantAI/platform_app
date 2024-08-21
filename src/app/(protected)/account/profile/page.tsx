@@ -1,18 +1,6 @@
-'use client';
-
-import { Container, Row } from 'react-bootstrap';
-import { useTitle } from '@/hooks/useTitle';
-import ProfileMain from './_components/ProfileMain';
+import ProfileMain from 'module/protected/account/profile/ProfileMain';
 
 const Profile = () => {
-  useTitle('Profile - BeeQuant');
-
-  return (
-    <Container>
-      <Row>
-        <ProfileMain />
-      </Row>
-    </Container>
-  );
+  return <ProfileMain />;
 };
 export default Profile;
