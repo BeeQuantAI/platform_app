@@ -18,3 +18,23 @@ export const USER_REGISTER = gql(`
     }
   }
 `);
+
+export const USER_FORGOT_PASSWORD = gql(`
+  mutation ForgotPassword($email: String!){
+    forgotPassword(email: $email) {
+      code
+      message
+      data
+    }
+  }
+`);
+
+export const USER_RESET_PASSWORD = gql(`
+  mutation resetPassword($input: ResetPasswordInput!){
+    resetPassword(input: $input) {
+      code
+      message
+      data
+    }
+  }
+`);
