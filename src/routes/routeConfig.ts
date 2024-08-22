@@ -13,6 +13,8 @@ import ExchangeDetails from 'app/(protected)/crypto/exchange/details/page';
 import PriceDetails from 'app/(protected)/crypto/price/details/page';
 import BotDetail from 'app/(protected)/bot/details/page';
 import BotCreate from 'app/(protected)/bot/create/page';
+import ForgotPassword from 'app/(auth)/forgot-password/page';
+import ResetPassword from 'app/(auth)/reset-password/page';
 
 interface IRoute {
   path: string;
@@ -30,6 +32,8 @@ export const ROUTE_KEY = {
   LOGIN: 'login',
   REGISTER: 'register',
   SETTINGS: 'settings',
+  FORGOT_PASSWORD: 'forgot_password',
+  RESET_PASSWORD: 'reset_password',
   BOT_DASHBOARD: 'bot_dashboard',
   BOT_MANAGEMENT: 'bot_management',
   BOT_CREATE: 'bot_create',
@@ -53,6 +57,21 @@ export const PUBLIC_ROUTE_CONFIG: Record<string, IRoute> = {
     title: 'Register - BeeQuant',
     component: Register,
   },
+
+  [ROUTE_KEY.FORGOT_PASSWORD]: {
+    path: '/forgot',
+    name: 'Forgot Password',
+    title: 'Forgot Password - BeeQuant',
+    component: ForgotPassword,
+  },
+
+  [ROUTE_KEY.RESET_PASSWORD]: {
+    path: '/reset-password',
+    name: 'Reset Password',
+    title: 'Reset Password - BeeQuant',
+    component: ResetPassword,
+  },
+
   [ROUTE_KEY.PAGE_404]: {
     path: '/404',
     name: '404',

@@ -68,7 +68,7 @@ export default function LoginFormGroup() {
             defaultValue=""
           />
           <AccountForgotPassword>
-            <Link href="login">Forgot a password?</Link>
+            <Link href="forgot-password">Forgot password?</Link>
           </AccountForgotPassword>
         </FormGroupField>
       </FormGroup>
